@@ -1,0 +1,165 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif;
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer utilities {
+  .nav {
+    @apply relative cursor-pointer dark:text-white text-darkGrey text-xl dark:hover:text-secondary hover:text-secondary transition-all duration-500;
+  }
+
+  .nav::after {
+    content: "";
+    @apply bg-secondary h-[2px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute transition-all duration-500;
+  }
+
+  .nav:hover::after {
+    @apply w-[100%];
+  }
+
+  .social-icon {
+    @apply w-8 h-8 sm:w-10 sm:h-10 hover:scale-110 hover:-rotate-6 transition-transform duration-300;
+  }
+
+  .section {
+    @apply relative w-full py-6 mx-auto px-[8%] mt-16 overflow-x-hidden;
+  }
+
+  .section-title {
+    @apply text-center uppercase relative pb-2;
+  }
+
+  .section-title::before {
+    content: "";
+    @apply absolute left-1/2 bottom-0 transform -translate-x-1/2 h-[2px] dark:h-[1px] w-[150px] bg-secondary;
+  }
+
+  .section-title span {
+    @apply block text-xl uppercase tracking-[4px] mt-2 text-tertiary;
+  }
+
+  .perspective-800 {
+    perspective: 800px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .transform-card {
+    transform: rotateY(calc(var(--offset) * 50deg))
+      scaleY(calc(1 + var(--abs-offset) * -0.4))
+      translateZ(calc(var(--abs-offset) * -30rem))
+      translateX(calc(var(--direction) * -5rem));
+  }
+
+  .blur-filter {
+    filter: blur(calc(var(--abs-offset) * 1rem));
+  }
+
+  .slider-button {
+    @apply text-4xl md:text-5xl lg:text-6xl absolute top-1/2 z-10 hover:opacity-60 transition-all duration-500;
+  }
+
+  .left {
+    transform: translateX(-100%) translateY(-50%);
+  }
+
+  .right {
+    @apply right-0;
+    transform: translateX(100%) translateY(-50%);
+  }
+
+  .box-shadow-dark {
+    box-shadow: 20px 20px 30px #000000, -10px -10px 30px #000000;
+  }
+
+  .box-shadow-light {
+    box-shadow: 20px 20px 60px #d1d1d1, -20px -20px 60px #979797;
+  }
+
+  .nav-shadow {
+    box-shadow: 0px 10px 10px 0px #000000;
+  }
+
+  .contact-input {
+    @apply w-full bg-transparent placeholder:text-dark dark:placeholder:text-light placeholder:text-sm outline-none 
+    border-b-[1px] dark:border-white border-dark py-4 pr-4;
+  }
+
+  .contact-label {
+    @apply absolute -top-1 block text-dark dark:text-light text-xs transition-all duration-150
+    peer-focus:text-sm dark:peer-focus:text-white peer-focus:text-black
+    peer-placeholder-shown:hidden;
+  }
+
+  .icon-circle-box {
+    @apply flex items-center justify-center rounded-[50%] w-12 h-12 border-tertiary border-[1px] p-1
+    dark:hover:border-white hover:border-black hover:scale-95 transition-all duration-300;
+  }
+
+  .projects-title-shadow {
+    text-shadow: 2px 2px 2px rgb(0, 0, 0), -2px -2px 10px rgb(0, 0, 0);
+  }
+
+  .camera-loader {
+    @apply bg-light w-24 h-16 outline outline-4 outline-dark rounded-lg relative animate-bounce;
+  }
+
+  .camera-loader::after {
+    content: "";
+    @apply absolute left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-10 h-5 bg-light rounded-[5px];
+  }
+
+  .camera-loader:before {
+    content: "";
+    @apply block absolute left-1/2 -translate-x-1/2 translate-y-1/4 w-11 h-11 border-[6px] border-dark rounded-[50%];
+  }
+
+  .flipcard-shadow-dark {
+    box-shadow: 0px 10px 20px #000000;
+    background: linear-gradient(rgba(255, 255, 255, 0.03), transparent);
+  }
+
+  .flipcard-shadow-light {
+    box-shadow: 8px 8px 20px #bebebe,-8px -8px 40px #efeeec;
+    background: #dcdcdc;
+  }
+
+  .flipcard-front,
+  .flipcard-back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+  }
+
+  .flipcard-back {
+    transform: rotateY(180deg);
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
