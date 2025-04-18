@@ -1,0 +1,13 @@
+scalar DateTime
+
+type Query{
+    comments: [Comment]
+}
+
+type Comment {
+    id: ID
+    author: String
+    message: String
+    createdAt: DateTime
+    approved: Boolean
+}
