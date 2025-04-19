@@ -1,0 +1,8 @@
+type Mutation {
+    addComment(comment: CommentInput): Comment
+}
+
+input CommentInput {
+    author: String
+    message: String
+}
