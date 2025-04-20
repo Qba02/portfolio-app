@@ -2,6 +2,10 @@ type Mutation {
     createComment(comment: CommentInput!): Comment
     updateComment(comment: CommentUpdateInput!): Comment
     deleteComment(commentId: ID!): Boolean
+
+    createUser(user: UserInput!): User
+    updateUser(user: UserUpdateInput!): User
+    deleteUser(userid: ID!): Boolean
 }
 
 input CommentInput {
@@ -13,4 +17,17 @@ input CommentUpdateInput {
     id: ID!
     author: String
     message: String
+}
+
+input UserInput {
+    username: String
+    email: String
+    password: String
+}
+
+input UserUpdateInput {
+    id: ID!
+    username: String
+    email: String
+    password: String
 }

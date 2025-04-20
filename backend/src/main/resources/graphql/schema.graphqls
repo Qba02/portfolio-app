@@ -1,9 +1,18 @@
 scalar LocalDateTime
 
 type Comment {
-    id: ID
+    id: ID!
     author: String
     message: String
     createdAt: LocalDateTime
     approved: Boolean
+}
+
+type User {
+    id: ID!
+    username: String
+    email: String
+    password: String
+    role: String
+    createdAt: LocalDateTime
 }
