@@ -19,10 +19,10 @@ public class GraphQLExceptionHandler extends DataFetcherExceptionResolverAdapter
     @NonNull
     protected GraphQLError resolveToSingleError(Throwable ex, @NonNull DataFetchingEnvironment env) {
         switch (ex) {
-            case CommentNotFoundException ignored -> {
+            case NotFoundException ignored -> {
                 return toGraphQLError(ex, env, ErrorType.NOT_FOUND);
             }
-            case CommentAlreadyExistsException ignored -> {
+            case AlreadyExistsException ignored -> {
                 return toGraphQLError(ex, env, CustomErrorType.ALREADY_EXISTS);
             }
             case IllegalArgumentException ignored -> {

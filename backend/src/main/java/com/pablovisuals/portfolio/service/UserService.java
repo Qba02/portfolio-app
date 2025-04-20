@@ -3,8 +3,8 @@ package com.pablovisuals.portfolio.service;
 import com.mongodb.client.result.DeleteResult;
 import com.pablovisuals.portfolio.dto.UserInput;
 import com.pablovisuals.portfolio.dto.UserUpdateInput;
-import com.pablovisuals.portfolio.exception.UserEmailAlreadyExistsException;
-import com.pablovisuals.portfolio.exception.UserNotFoundException;
+import com.pablovisuals.portfolio.exception.AlreadyExistsException;
+import com.pablovisuals.portfolio.exception.NotFoundException;
 import com.pablovisuals.portfolio.model.Role;
 import com.pablovisuals.portfolio.model.User;
 import com.pablovisuals.portfolio.repository.UserRepository;
@@ -40,7 +40,7 @@ public class UserService {
                             .build());
 
         } catch (DuplicateKeyException e) {
-            throw new UserEmailAlreadyExistsException("User with email: " + user.email() + " already exists");
+            throw new AlreadyExistsException("User with email: " + user.email() + " already exists");
         }
     }
 
@@ -68,7 +68,7 @@ public class UserService {
         Query query = new Query(Criteria.where("id").is(id));
         DeleteResult result = mongoTemplate.remove(query, User.class);
         if (result.getDeletedCount() == 0) {
-            throw new UserNotFoundException("User with id: " + id + " not found");
+            throw new NotFoundException("User", id);
         } else {
             return true;
         }

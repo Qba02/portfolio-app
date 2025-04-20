@@ -3,8 +3,8 @@ package com.pablovisuals.portfolio.service;
 import com.mongodb.client.result.DeleteResult;
 import com.pablovisuals.portfolio.dto.CommentInput;
 import com.pablovisuals.portfolio.dto.CommentUpdateInput;
-import com.pablovisuals.portfolio.exception.CommentAlreadyExistsException;
-import com.pablovisuals.portfolio.exception.CommentNotFoundException;
+import com.pablovisuals.portfolio.exception.AlreadyExistsException;
+import com.pablovisuals.portfolio.exception.NotFoundException;
 import com.pablovisuals.portfolio.model.Comment;
 import com.pablovisuals.portfolio.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
@@ -46,7 +46,7 @@ public class CommentService {
                             .createdAt(LocalDateTime.now())
                             .build());
         } catch (DuplicateKeyException e) {
-            throw new CommentAlreadyExistsException("Comment with exact same author (" + comment.author()
+            throw new AlreadyExistsException("Comment with exact same author (" + comment.author()
                     + ") and message (`" + comment.message() + "`) already exists");
         }
 
@@ -74,7 +74,7 @@ public class CommentService {
         Query query = new Query(Criteria.where("id").is(id));
         DeleteResult result = mongoTemplate.remove(query, Comment.class);
         if (result.getDeletedCount() == 0) {
-            throw new CommentNotFoundException("Comment with id: " + id + " not found");
+            throw new NotFoundException("Comment", id);
         } else {
             return true;
         }
