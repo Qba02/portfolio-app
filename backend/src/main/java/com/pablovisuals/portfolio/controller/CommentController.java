@@ -38,7 +38,7 @@ public class CommentController {
         return commentService.updateComment(comment);
     }
     @MutationMapping
-    public boolean deleteComment(@Argument String id){
-        return commentService.deleteCommentById(id);
+    public boolean deleteComment(@Argument String commentId){
+        return commentService.deleteCommentById(commentId);
     }
 }
