@@ -1,8 +1,16 @@
 type Mutation {
-    addComment(comment: CommentInput): Comment
+    createComment(comment: CommentInput!): Comment
+    updateComment(comment: CommentUpdateInput!): Comment
+    deleteComment(commentId: ID!): Boolean
 }
 
 input CommentInput {
+    author: String
+    message: String
+}
+
+input CommentUpdateInput {
+    id: ID!
     author: String
     message: String
 }

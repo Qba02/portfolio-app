@@ -1,6 +1,7 @@
 package com.pablovisuals.portfolio.controller;
 
 import com.pablovisuals.portfolio.dto.CommentInput;
+import com.pablovisuals.portfolio.dto.CommentUpdateInput;
 import com.pablovisuals.portfolio.model.Comment;
 import com.pablovisuals.portfolio.service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,16 @@ public class CommentController {
     }
 
     @MutationMapping
-    public Comment addComment(@Argument CommentInput comment){
+    public Comment createComment(@Argument CommentInput comment){
         return commentService.saveComment(comment);
+    }
+
+    @MutationMapping
+    public Comment updateComment(@Argument CommentUpdateInput comment){
+        return commentService.updateComment(comment);
+    }
+    @MutationMapping
+    public boolean deleteComment(@Argument String id){
+        return commentService.deleteCommentById(id);
     }
 }
