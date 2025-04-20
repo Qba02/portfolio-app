@@ -6,6 +6,7 @@ import graphql.schema.CoercingParseLiteralException;
 import graphql.schema.CoercingParseValueException;
 import graphql.schema.CoercingSerializeException;
 import graphql.schema.GraphQLScalarType;
+import org.springframework.lang.NonNull;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,7 +21,7 @@ public class LocalDateTimeScalar {
                 .description("Custom scalar for handling LocalDateTime in format 'yyyy-MM-dd HH:mm'")
                 .coercing(new Coercing<LocalDateTime, String>() {
                     @Override
-                    public String serialize(Object dataFetcherResult) {
+                    public String serialize(@NonNull Object dataFetcherResult) {
                         if (dataFetcherResult instanceof LocalDateTime dateTime) {
                             return FORMATTER.format(dateTime);
                         }
@@ -28,7 +29,7 @@ public class LocalDateTimeScalar {
                     }
 
                     @Override
-                    public LocalDateTime parseValue(Object input) {
+                    public LocalDateTime parseValue(@NonNull Object input) {
                         if (input instanceof String dateTimeStr) {
                             try {
                                 return LocalDateTime.parse(dateTimeStr, FORMATTER);
@@ -41,7 +42,7 @@ public class LocalDateTimeScalar {
                     }
 
                     @Override
-                    public LocalDateTime parseLiteral(Object input) {
+                    public LocalDateTime parseLiteral(@NonNull Object input) {
                         if (input instanceof StringValue stringValue) {
                             try {
                                 return LocalDateTime.parse(stringValue.getValue(), FORMATTER);
