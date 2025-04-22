@@ -5,7 +5,6 @@ import com.pablovisuals.portfolio.dto.UserInput;
 import com.pablovisuals.portfolio.dto.UserUpdateInput;
 import com.pablovisuals.portfolio.exception.AlreadyExistsException;
 import com.pablovisuals.portfolio.exception.NotFoundException;
-import com.pablovisuals.portfolio.model.Role;
 import com.pablovisuals.portfolio.model.User;
 import com.pablovisuals.portfolio.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,6 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -35,7 +33,6 @@ public class UserService {
                             .username(user.username())
                             .email(user.email())
                             .password(user.password())
-                            .role(Collections.singleton(Role.ADMIN))
                             .createdAt(LocalDateTime.now())
                             .build());
 
