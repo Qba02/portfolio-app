@@ -3,14 +3,14 @@ type Mutation {
     updateComment(comment: CommentUpdateInput!): Comment
     deleteComment(commentId: ID!): Boolean
 
-    createUser(user: UserInput!): User
+    registerUser(user: UserInput!): User
     updateUser(user: UserUpdateInput!): User
-    deleteUser(userid: ID!): Boolean
+    deleteUser(userId: ID!): Boolean
 }
 
 input CommentInput {
-    author: String
-    message: String
+    author: String!
+    message: String!
 }
 
 input CommentUpdateInput {
@@ -20,9 +20,9 @@ input CommentUpdateInput {
 }
 
 input UserInput {
-    username: String
-    email: String
-    password: String
+    username: String!
+    email: String!
+    password: String!
 }
 
 input UserUpdateInput {
