@@ -15,7 +15,7 @@ public class UserController {
     private final UserService userService;
 
     @MutationMapping
-    public User createUser(@Argument UserInput user){
+    public User registerUser(@Argument UserInput user){
         return userService.saveUser(user);
     }
 

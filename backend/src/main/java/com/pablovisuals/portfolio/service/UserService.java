@@ -7,13 +7,14 @@ import com.pablovisuals.portfolio.exception.AlreadyExistsException;
 import com.pablovisuals.portfolio.exception.NotFoundException;
 import com.pablovisuals.portfolio.model.User;
 import com.pablovisuals.portfolio.repository.UserRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.data.mongodb.core.query.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,8 +24,16 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
+    @Value("${security.password.encoder.strength}")
+    private int passwordStrength;
     private final UserRepository userRepository;
     private final MongoTemplate mongoTemplate;
+    private BCryptPasswordEncoder encoder;
+
+    @PostConstruct
+    private void init() {
+        this.encoder = new BCryptPasswordEncoder(passwordStrength);
+    }
 
     public User saveUser(UserInput user) {
         try {
@@ -32,7 +41,7 @@ public class UserService {
                     User.builder()
                             .username(user.username())
                             .email(user.email())
-                            .password(user.password())
+                            .password(encoder.encode(user.password()))
                             .createdAt(LocalDateTime.now())
                             .build());
 
