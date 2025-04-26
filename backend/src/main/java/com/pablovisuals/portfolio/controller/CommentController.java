@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class CommentController {
     }
 
     @QueryMapping
+    @PreAuthorize("isAuthenticated()")
     public List<Comment> commentsByApproved(@Argument boolean approved){
         return commentService.getApprovedComments(approved);
     }
@@ -38,6 +40,7 @@ public class CommentController {
         return commentService.updateComment(comment);
     }
     @MutationMapping
+    @PreAuthorize("isAuthenticated()")
     public boolean deleteComment(@Argument String commentId){
         return commentService.deleteCommentById(commentId);
     }

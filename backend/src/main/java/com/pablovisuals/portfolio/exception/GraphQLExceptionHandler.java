@@ -7,6 +7,7 @@ import graphql.schema.DataFetchingEnvironment;
 import org.springframework.graphql.execution.DataFetcherExceptionResolverAdapter;
 import org.springframework.graphql.execution.ErrorType;
 import org.springframework.lang.NonNull;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +16,7 @@ public class GraphQLExceptionHandler extends DataFetcherExceptionResolverAdapter
     private enum CustomErrorType implements ErrorClassification {
         ALREADY_EXISTS,
     }
+
     @Override
     @NonNull
     protected GraphQLError resolveToSingleError(Throwable ex, @NonNull DataFetchingEnvironment env) {
@@ -27,6 +29,9 @@ public class GraphQLExceptionHandler extends DataFetcherExceptionResolverAdapter
             }
             case IllegalArgumentException ignored -> {
                 return toGraphQLError(ex, env, ErrorType.BAD_REQUEST);
+            }
+            case AccessDeniedException ignored -> {
+                return toGraphQLError(ex, env, ErrorType.FORBIDDEN);
             }
             default -> {
                 return GraphqlErrorBuilder.newError(env)

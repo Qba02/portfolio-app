@@ -1,8 +1,7 @@
 package com.pablovisuals.portfolio.service;
 
 import com.mongodb.client.result.DeleteResult;
-import com.pablovisuals.portfolio.dto.UserInput;
-import com.pablovisuals.portfolio.dto.UserUpdateInput;
+import com.pablovisuals.portfolio.dto.*;
 import com.pablovisuals.portfolio.exception.AlreadyExistsException;
 import com.pablovisuals.portfolio.exception.NotFoundException;
 import com.pablovisuals.portfolio.model.User;
@@ -14,6 +13,9 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.*;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,8 @@ public class UserService {
     private int passwordStrength;
     private final UserRepository userRepository;
     private final MongoTemplate mongoTemplate;
+    private final AuthenticationManager authManager;
+    private final JwtService jwtService;
     private BCryptPasswordEncoder encoder;
 
     @PostConstruct
@@ -48,6 +52,12 @@ public class UserService {
         } catch (DuplicateKeyException e) {
             throw new AlreadyExistsException("User with email: " + user.email() + " already exists");
         }
+    }
+
+    public String verifyUser(UserLoginInput user) {
+        Authentication authentication = authManager.authenticate(
+                new UsernamePasswordAuthenticationToken(user.email(), user.password()));
+        return authentication.isAuthenticated() ? jwtService.generateToken(user.email()) : "Failure";
     }
 
     public User updateUser(UserUpdateInput user) {
