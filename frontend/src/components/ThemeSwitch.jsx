@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { MdDarkMode } from "react-icons/md";
-import { MdLightMode } from "react-icons/md";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 function ThemeSwitch() {
   const [darkMode, setDarkMode] = useState(false);

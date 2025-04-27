@@ -1,11 +1,11 @@
 import React from "react";
-import { offer } from "../constants/content";
-import { responsiveText } from "../styles/responsiveText";
+import { offer } from "@constants/content";
+import { responsiveText } from "@styles/responsiveText";
 import { BsExclamationCircle } from "react-icons/bs";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { gridContainerMotions } from "../styles/animations";
-import { FlipCard } from "../components/index";
+import { gridContainerMotions } from "@styles/animations";
+import { FlipCard } from "@components/index";
 
 const Offer = () => {
   const sectionRef = useRef(null);

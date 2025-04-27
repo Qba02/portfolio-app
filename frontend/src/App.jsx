@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import {
-  Navbar,
-  Hero,
-  About,
-  Offer,
-  Projects,
-  Contact,
-  Footer,
-  Loader,
-} from "./components/index.js";
+import HomePage from "./pages/home/HomePage";
+import { Loader, Footer } from "./components/index";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -26,17 +18,7 @@ const App = () => {
         <Loader></Loader>
       ) : (
         <main className="relative z-0 bg-light dark:bg-dark">
-          <div>
-            <Navbar />
-            <Hero></Hero>
-          </div>
-
-          <div>
-            <About />
-            <Offer />
-            <Projects />
-            <Contact />
-          </div>
+          <HomePage/>
           <Footer></Footer>
         </main>
       )}

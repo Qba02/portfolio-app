@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import { aboutMe } from "../constants/content";
-import { responsiveText } from "../styles/responsiveText";
-import { profilePic } from "../assets/index";
+import { aboutMe } from "@constants/content";
+import { responsiveText } from "@styles/responsiveText";
+import { profilePic } from "@assets/index";
 import { motion, useInView } from "framer-motion";
-import { cardFadeLeft, cardFadeRight } from "../styles/animations";
+import { cardFadeLeft, cardFadeRight } from "@styles/animations";
 
 const About = () => {
   const sectionRef = useRef(null);

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-import { navLinks } from "../constants/links";
-import { logo, logoDark } from "../assets";
+import { navLinks } from "@constants/links";
+import { logo, logoDark } from "@assets";
 import { motion } from "framer-motion";
-import { cardFadeUp, gridContainerMotions } from "../styles/animations";
-import { ThemeSwitch } from "./index";
+import { cardFadeUp, gridContainerMotions } from "@styles/animations";
+import { ThemeSwitch } from "@components/index";
 
 const Navbar = () => {
   const [onTop, setOnTop] = useState(true);

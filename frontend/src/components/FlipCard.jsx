@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { cardFadeUp } from "../../styles/animations";
+import { cardFadeUp } from "@styles/animations";
 
 export const FlipCard = ({ title, icon, subtitle, index }) => {
   const [isFlipped, setIsFlipped] = useState(false);

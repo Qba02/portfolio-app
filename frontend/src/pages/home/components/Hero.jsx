@@ -1,12 +1,11 @@
 import React from "react";
-import { hero } from "../constants/content";
-import { responsiveText } from "../styles/responsiveText";
-import { SiYoutube } from "react-icons/si";
-import { SiInstagram } from "react-icons/si";
-import { externalLinks } from "../constants/links";
+import { hero } from "@constants/content";
+import { responsiveText } from "@styles/responsiveText";
+import { SiYoutube, SiInstagram  } from "react-icons/si";
+import { externalLinks } from "@constants/links";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
-import { textFadeUp } from "../styles/animations";
+import { textFadeUp } from "@styles/animations";
 
 const Hero = () => {
   const ytLink = externalLinks.find((link) => link.id === "yt");
