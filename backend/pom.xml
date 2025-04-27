@@ -31,7 +31,6 @@
         <lombok.version>1.18.36</lombok.version>
         <graphql-scalars.version>21.0</graphql-scalars.version>
         <oauth2.client.version>6.4.5</oauth2.client.version>
-        <!--        <graphql.version>3.4.4</graphql.version>-->
     </properties>
     <dependencies>
         <!-- Spring Boot Starters -->
@@ -57,14 +56,6 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
-        <!-- OAuth2 -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-client</artifactId>
-            <version>${oauth2.client.version}</version>
-        </dependency>
-
 
         <!-- GraphQL -->
         <dependency>
