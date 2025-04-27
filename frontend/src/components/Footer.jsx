@@ -48,7 +48,7 @@ const Footer = () => {
           aria-hidden="true"
           className="relative group icon-circle-box"
         >
-          <span className="absolute top-[-50%] -translate-y-1/2 text-light text-sm">
+          <span className="absolute top-[-50%] -translate-y-1/2 dark:text-light text-dark text-sm">
             {copied ? <>Skopiowano&nbsp;email</> : ""}
           </span>
           <MdMail onClick={copyToClipboard} className="w-6 h-6 cursor-pointer"></MdMail>

@@ -20,12 +20,12 @@ public class CommentController {
     private final CommentService commentService;
 
     @QueryMapping
+    @PreAuthorize("isAuthenticated()")
     public List<Comment> comments() {
         return commentService.getAllComments();
     }
 
     @QueryMapping
-    @PreAuthorize("isAuthenticated()")
     public List<Comment> commentsByApproved(@Argument boolean approved){
         return commentService.getApprovedComments(approved);
     }
