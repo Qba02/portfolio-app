@@ -1,8 +1,10 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
+
+const commentsAtFirstPageNumber = 6;
 
 const GET_APPROVED_COMMENTS = gql`
 query CommentsByApproved {
-    commentsByApproved(approved: false) {
+    commentsByApproved(limit: ${commentsAtFirstPageNumber}) {
         id
         author
         message
@@ -11,4 +13,4 @@ query CommentsByApproved {
 }
 `;
 
-export {GET_APPROVED_COMMENTS}
+export { GET_APPROVED_COMMENTS };
