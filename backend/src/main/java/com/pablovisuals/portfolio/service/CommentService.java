@@ -9,6 +9,7 @@ import com.pablovisuals.portfolio.model.Comment;
 import com.pablovisuals.portfolio.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -32,8 +33,13 @@ public class CommentService {
         return commentRepository.findAll();
     }
 
-    public List<Comment> getApprovedComments(boolean approved) {
-        return commentRepository.findAllByApproved(approved);
+    public List<Comment> getLatestApprovedComments(int limit) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("approved").is(true))
+                .with(Sort.by(Sort.Direction.DESC, "createdAt"))
+                .limit(limit);
+
+        return mongoTemplate.find(query, Comment.class);
     }
 
     public Comment saveComment(CommentInput comment) {

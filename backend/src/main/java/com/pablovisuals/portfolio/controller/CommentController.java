@@ -26,8 +26,8 @@ public class CommentController {
     }
 
     @QueryMapping
-    public List<Comment> commentsByApproved(@Argument boolean approved){
-        return commentService.getApprovedComments(approved);
+    public List<Comment> commentsByApproved(@Argument int limit){
+        return commentService.getLatestApprovedComments(limit);
     }
 
     @MutationMapping
