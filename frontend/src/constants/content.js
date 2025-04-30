@@ -127,4 +127,9 @@ const contact = {
   tagline: "Porozmawiajmy o Twojej wizji",
 };
 
-export { aboutMe, experience, offer, projects, hero, contact };
+const comments = {
+  title: "Komentarze",
+  tagline: "Podziel się swoją opinią",
+};
+
+export { aboutMe, experience, offer, projects, hero, contact, comments };

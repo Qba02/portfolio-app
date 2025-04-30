@@ -15,6 +15,19 @@
   color-scheme: dark;
 }
 
+.swiper-pagination {
+  bottom: 0 !important;
+}
+.swiper-pagination-bullet {
+  background-color: #d50000 !important;
+  opacity: 0.3 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #be123c !important;
+  opacity: 1 !important;
+}
+
 @layer utilities {
   .nav {
     @apply relative cursor-pointer dark:text-white text-darkGrey text-xl dark:hover:text-secondary hover:text-secondary transition-all duration-500;
@@ -133,7 +146,7 @@
   }
 
   .flipcard-shadow-light {
-    box-shadow: 8px 8px 20px #bebebe,-8px -8px 40px #efeeec;
+    box-shadow: 8px 8px 20px #bebebe, -8px -8px 40px #efeeec;
     background: #dcdcdc;
   }
 
@@ -161,5 +174,13 @@
 
   .animate-blink {
     animation: blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .custom-scroll::-webkit-scrollbar {
+    @apply w-[7px] cursor-move;
+  }
+
+  .custom-scroll::-webkit-scrollbar-thumb {
+    @apply bg-dark/50 dark:bg-light/60 rounded-md;
   }
 }

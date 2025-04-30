@@ -7,8 +7,8 @@ import {
   Offer,
   Projects,
   Contact,
+  Comments,
 } from "./components/index.js";
-
 
 const HomePage = () => {
   return (
@@ -22,6 +22,7 @@ const HomePage = () => {
         <About />
         <Offer />
         <Projects />
+        <Comments />
         <Contact />
       </div>
     </>

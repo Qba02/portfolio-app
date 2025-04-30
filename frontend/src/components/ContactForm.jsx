@@ -36,7 +36,7 @@ function ContactForm() {
           type="text"
           name="message"
           placeholder="Wiadomość"
-          className="peer contact-input"
+          className="peer contact-input custom-scroll"
         />
         <label htmlFor="messageInput" className="contact-label">
           Wiadomość

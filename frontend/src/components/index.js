@@ -5,6 +5,8 @@ import Loader from "./Loader";
 import FlipCard from "./FlipCard";
 import ThemeSwitch from "./ThemeSwitch";
 import Footer from "./Footer";
+import CommentCard from "./CommentCard";
+import CommentForm from "./CommentForm";
 
 export {
   Slider,
@@ -15,4 +17,6 @@ export {
   FlipCard,
   ThemeSwitch,
   Footer,
+  CommentCard,
+  CommentForm,
 };
