@@ -6,8 +6,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useQuery } from "@apollo/client";
+import { GET_APPROVED_COMMENTS } from "@services/queries";
+import { Loader } from "@components";
+import { formatDistanceToNow } from "date-fns";
+import { pl } from "date-fns/locale";
 
 const Comments = () => {
+  const { data, loading, error } = useQuery(GET_APPROVED_COMMENTS);
+
+  if (loading) return <Loader />;
+  if (error) return <></>;
+
   return (
     <section id="comments" className="section">
       <h2 className={`${responsiveText.sectionHeading} section-title`}>
@@ -27,13 +37,18 @@ const Comments = () => {
           grabCursor={true}
           loop={true}
         >
-          <SwiperSlide>
-            <CommentCard
-              author="Jakub Nowak"
-              date="20 minut temu"
-              content="Genialna współpraca, dziękuję"
-            />
-          </SwiperSlide>
+          {data.commentsByApproved.map((comment) => (
+            <SwiperSlide key={comment.id}>
+              <CommentCard
+                author={comment.author}
+                date={formatDistanceToNow(new Date(comment.createdAt), {
+                  addSuffix: true,
+                  locale: pl,
+                })}
+                content={comment.message}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>
