@@ -23,7 +23,10 @@ const Contact = () => {
         <motion.div variants={cardFadeLeft} className="w-full lg:w-[40%]">
           <ContactForm />
         </motion.div>
-        <motion.div variants={cardFadeRight} className="w-full lg:w-[50%]">
+        <motion.div
+          variants={cardFadeRight}
+          className="w-full lg:w-[50%] cursor-grab"
+        >
           <EnvelopeCanvas />
         </motion.div>
       </motion.div>
