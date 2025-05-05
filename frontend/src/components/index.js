@@ -7,6 +7,8 @@ import ThemeSwitch from "./ThemeSwitch";
 import Footer from "./Footer";
 import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 
 export {
   Slider,
@@ -19,4 +21,6 @@ export {
   Footer,
   CommentCard,
   CommentForm,
+  RegisterForm,
+  LoginForm,
 };
