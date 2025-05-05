@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import { LoginForm, RegisterForm, CommentForm } from "@components";
 
 function AdminPanelPage() {
   return (
-    <div>AdminPanelPage</div>
-  )
+    <>
+      <LoginForm />
+      <RegisterForm />
+      <CommentForm/>
+    </>
+  );
 }
 
-export default AdminPanelPage
+export default AdminPanelPage;

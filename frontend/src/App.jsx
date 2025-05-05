@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import HomePage from "./pages/home/HomePage";
-import { Loader, Footer } from "./components/index";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {HomePage, AdminPanelPage, NotFoundPage} from "@pages/index";
+import { Loader, Footer } from "@components/index";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,12 @@ const App = () => {
         <Loader></Loader>
       ) : (
         <main className="relative z-0 bg-light dark:bg-dark">
-          <HomePage/>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/admin" element={<AdminPanelPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+
           <Footer></Footer>
         </main>
       )}
