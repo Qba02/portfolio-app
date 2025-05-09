@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {HomePage, AdminPanelPage, NotFoundPage} from "@pages/index";
-import { Loader, Footer } from "@components/index";
+import {HomePage, AdminPanelPage, NotFoundPage} from "./pages/index";
+import { Loader, Footer } from "./components/index";
 
 const App = () => {
   const [loading, setLoading] = useState(true);

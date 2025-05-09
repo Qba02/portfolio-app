@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { COLOR_MODE_KEY } from "@constants/localstorage";
 
 function ThemeSwitch() {
   const [darkMode, setDarkMode] = useState(false);
-  const modeName = "theme";
   const darkModeName = "dark";
   const lightModeName = "light";
 
@@ -13,10 +13,10 @@ function ThemeSwitch() {
 
     if (newTheme) {
       document.documentElement.classList.add(darkModeName);
-      localStorage.setItem(modeName, darkModeName);
+      localStorage.setItem(COLOR_MODE_KEY, darkModeName);
     } else {
       document.documentElement.classList.remove(darkModeName);
-      localStorage.setItem(modeName, lightModeName);
+      localStorage.setItem(COLOR_MODE_KEY, lightModeName);
     }
   };
 
