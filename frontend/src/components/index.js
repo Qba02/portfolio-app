@@ -1,14 +1,14 @@
 import { Slider, SliderCard } from "./Slider";
 import EnvelopeCanvas from "./EnvelopeCanvas";
-import ContactForm from "./ContactForm";
 import Loader from "./Loader";
 import FlipCard from "./FlipCard";
 import ThemeSwitch from "./ThemeSwitch";
 import Footer from "./Footer";
 import CommentCard from "./CommentCard";
-import CommentForm from "./CommentForm";
-import RegisterForm from "./RegisterForm";
-import LoginForm from "./LoginForm";
+import ContactForm from "./forms/ContactForm";
+import CommentForm from "./forms/CommentForm";
+import RegisterForm from "./forms/RegisterForm";
+import LoginForm from "./forms/LoginForm";
 
 export {
   Slider,

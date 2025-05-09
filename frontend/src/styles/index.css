@@ -117,6 +117,20 @@
     peer-placeholder-shown:hidden;
   }
 
+  .form-error-input{
+    @apply border-primary
+  }
+
+
+  .form-error-message{
+    @apply text-xs text-primary
+  }
+
+
+  .form-submit-button{
+    @apply w-full h-14 bg-dark dark:bg-light text-light dark:text-dark mt-6  font-medium text-lg
+  }
+
   .icon-circle-box {
     @apply flex items-center justify-center rounded-[50%] w-12 h-12 border-tertiary border-[1px] p-1
     dark:hover:border-white hover:border-black hover:scale-95 transition-all duration-300;

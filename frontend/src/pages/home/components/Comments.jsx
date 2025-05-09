@@ -51,6 +51,8 @@ const Comments = () => {
           ))}
         </Swiper>
       </div>
+      <button className="rounded-md p-3 m-auto text-light font-medium dark:text-dark
+       bg-dark dark:bg-light transition duration-300 ease-in-out hover:scale-105">Skomentuj</button>
     </section>
   );
 };
