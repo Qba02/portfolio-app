@@ -118,7 +118,7 @@
   }
 
   .form-error-input{
-    @apply border-primary
+    @apply border-primary dark:border-primary
   }
 
 

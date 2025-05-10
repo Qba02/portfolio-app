@@ -9,6 +9,7 @@ import ContactForm from "./forms/ContactForm";
 import CommentForm from "./forms/CommentForm";
 import RegisterForm from "./forms/RegisterForm";
 import LoginForm from "./forms/LoginForm";
+import Modal from "./Modal";
 
 export {
   Slider,
@@ -23,4 +24,5 @@ export {
   CommentForm,
   RegisterForm,
   LoginForm,
+  Modal,
 };

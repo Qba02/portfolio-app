@@ -2,7 +2,7 @@ import React from "react";
 import { NameInput, TextInput } from "./inputs";
 import { useForm } from "react-hook-form";
 
-const CommentForm = () => {
+const CommentForm = ({ onFormSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -11,6 +11,7 @@ const CommentForm = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    onFormSubmit(false);
   };
 
   return (
