@@ -1,8 +1,16 @@
-import React from "react";
 import { useForm } from "react-hook-form";
-import { ConfirmPasswordInput, EmailInput, PasswordInput, NameInput } from "./inputs";
+import {
+  ConfirmPasswordInput,
+  EmailInput,
+  PasswordInput,
+  NameInput,
+} from "./inputs";
+import { Toast, Loader } from "@components/index";
+import { useRegisterUser } from "@hooks/useRegisterUser";
 
 const RegisterForm = () => {
+  const { handleRegister, error, loading } = useRegisterUser();
+
   const {
     register,
     handleSubmit,
@@ -12,8 +20,9 @@ const RegisterForm = () => {
   } = useForm();
 
   const password = watch("password");
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = async (data) => {
+    await handleRegister(data);
     reset();
   };
 
@@ -47,12 +56,16 @@ const RegisterForm = () => {
         id="registerConfirmPasswordInput"
         password={password}
       />
-      <button
-        type="submit"
-        className="form-submit-button"
-      >
-        Zarejestruj się
-      </button>
+
+      {error && <Toast message={"Nie udało się zarejestrować"} />}
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <button type="submit" className="form-submit-button">
+          Zarejestruj się
+        </button>
+      )}
     </form>
   );
 };

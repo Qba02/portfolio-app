@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {HomePage, AdminPanelPage, NotFoundPage} from "./pages/index";
+import { HomePage, AdminPanelPage, NotFoundPage } from "./pages/index";
 import { Loader, Footer } from "./components/index";
+import { pagesUrl } from "./constants/links";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -15,12 +16,14 @@ const App = () => {
   return (
     <BrowserRouter>
       {loading ? (
-        <Loader></Loader>
+        <div className="m-auto w-full h-screen flex flex-col justify-center items-center p-6 z-20">
+          <Loader />
+        </div>
       ) : (
         <main className="relative z-0 bg-light dark:bg-dark">
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/admin" element={<AdminPanelPage />} />
+            <Route path={pagesUrl.home} element={<HomePage />} />
+            <Route path={pagesUrl.adminPanel} element={<AdminPanelPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
 

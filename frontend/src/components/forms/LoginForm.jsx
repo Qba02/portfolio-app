@@ -1,8 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { EmailInput, PasswordInput } from "./inputs";
+import { useLoginUser } from "@hooks/useLoginUser";
+import { Toast, Loader } from "@components/index";
 
 const LoginForm = () => {
+  const { handleLogin, error, loading } = useLoginUser();
+
   const {
     register,
     handleSubmit,
@@ -10,8 +14,8 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    await handleLogin(data);
     reset();
   };
 
@@ -34,10 +38,24 @@ const LoginForm = () => {
         error={errors.password}
         id="loginPasswordInput"
       />
+      {console.log(error)}
+      {error && (
+        <Toast
+          message={
+            error.message === "Bad credentials"
+              ? "Błędny email lub hasło"
+              : "Nie udało się zalogować"
+          }
+        />
+      )}
 
-      <button type="submit" className="form-submit-button">
-        Zaloguj się
-      </button>
+      {loading ? (
+        <Loader />
+      ) : (
+        <button type="submit" className="form-submit-button">
+          Zaloguj się
+        </button>
+      )}
     </form>
   );
 };

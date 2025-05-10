@@ -117,41 +117,39 @@
     peer-placeholder-shown:hidden;
   }
 
-  .form-error-input{
-    @apply border-primary dark:border-primary
+  .form-error-input {
+    @apply border-primary dark:border-primary;
   }
 
-
-  .form-error-message{
-    @apply text-xs text-primary
+  .form-error-message {
+    @apply text-xs text-primary;
   }
 
-
-  .form-submit-button{
+  .form-submit-button {
     @apply relative w-full h-14 bg-dark dark:bg-light text-light dark:text-dark mt-6 
-     font-medium text-lg hover:bg-transparent dark:hover:bg-transparent hover:text-dark dark:hover:text-light transition duration-300
+     font-medium text-lg hover:bg-transparent dark:hover:bg-transparent hover:text-dark dark:hover:text-light transition duration-300;
   }
 
-  .form-submit-button::before, 
-  .form-submit-button::after{
+  .form-submit-button::before,
+  .form-submit-button::after {
     content: "";
-    @apply w-full h-full absolute top-0 left-0 transition-all duration-300 -z-10
+    @apply w-full h-full absolute top-0 left-0 transition-all duration-300 -z-10;
   }
 
-  .form-submit-button::before{
-    @apply border-t-2 border-l-2 border-dark dark:border-light
+  .form-submit-button::before {
+    @apply border-t-2 border-l-2 border-dark dark:border-light;
   }
 
-  .form-submit-button::after{
-    @apply border-b-2 border-r-2 border-dark dark:border-light
+  .form-submit-button::after {
+    @apply border-b-2 border-r-2 border-dark dark:border-light;
   }
 
-  .form-submit-button:hover::before{
-    @apply -top-1 -left-1
+  .form-submit-button:hover::before {
+    @apply -top-1 -left-1;
   }
 
-  .form-submit-button:hover::after{
-    @apply top-1 left-1
+  .form-submit-button:hover::after {
+    @apply top-1 left-1;
   }
 
   .icon-circle-box {
@@ -164,17 +162,18 @@
   }
 
   .camera-loader {
-    @apply bg-light w-24 h-16 outline outline-4 outline-dark rounded-lg relative animate-bounce;
+    @apply  m-auto dark:bg-light bg-dark w-24 h-16 rounded-lg relative animate-bounce;
   }
 
   .camera-loader::after {
     content: "";
-    @apply absolute left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-10 h-5 bg-light rounded-[5px];
+    @apply absolute left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-10 h-3 dark:bg-light bg-dark rounded-[5px];
   }
 
   .camera-loader:before {
     content: "";
-    @apply block absolute left-1/2 -translate-x-1/2 translate-y-1/4 w-11 h-11 border-[6px] border-dark rounded-[50%];
+    @apply block absolute left-1/2 -translate-x-1/2 translate-y-1/4 w-11 h-11 
+    border-[6px] dark:border-dark border-light rounded-[50%];
   }
 
   .flipcard-shadow-dark {
