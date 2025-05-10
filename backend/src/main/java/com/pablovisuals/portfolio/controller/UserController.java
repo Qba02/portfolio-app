@@ -15,12 +15,13 @@ public class UserController {
     private final UserService userService;
 
     @MutationMapping
+    @PreAuthorize("isAuthenticated()")
     public User registerUser(@Argument UserInput user) {
         return userService.saveUser(user);
     }
 
     @MutationMapping
-    public String loginUser(@Argument UserLoginInput user) {
+    public UserAuthResponse loginUser(@Argument UserLoginInput user) {
         return userService.verifyUser(user);
     }
 

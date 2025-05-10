@@ -1,13 +1,12 @@
 package com.pablovisuals.portfolio.exception;
 
-import graphql.ErrorClassification;
-import graphql.GraphQLError;
-import graphql.GraphqlErrorBuilder;
+import graphql.*;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.graphql.execution.DataFetcherExceptionResolverAdapter;
 import org.springframework.graphql.execution.ErrorType;
 import org.springframework.lang.NonNull;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -32,6 +31,9 @@ public class GraphQLExceptionHandler extends DataFetcherExceptionResolverAdapter
             }
             case AccessDeniedException ignored -> {
                 return toGraphQLError(ex, env, ErrorType.FORBIDDEN);
+            }
+            case BadCredentialsException ignored -> {
+                return toGraphQLError(ex, env, ErrorType.UNAUTHORIZED);
             }
             default -> {
                 return GraphqlErrorBuilder.newError(env)

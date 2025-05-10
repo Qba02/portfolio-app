@@ -5,6 +5,7 @@ import com.pablovisuals.portfolio.dto.*;
 import com.pablovisuals.portfolio.exception.AlreadyExistsException;
 import com.pablovisuals.portfolio.exception.NotFoundException;
 import com.pablovisuals.portfolio.model.User;
+import com.pablovisuals.portfolio.model.UserPrincipal;
 import com.pablovisuals.portfolio.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +14,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.*;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,6 +39,7 @@ public class UserService {
         this.encoder = new BCryptPasswordEncoder(passwordStrength);
     }
 
+    //    TODO: return jwt token or make more complex validation with sending email
     public User saveUser(UserInput user) {
         try {
             return userRepository.save(
@@ -54,10 +55,24 @@ public class UserService {
         }
     }
 
-    public String verifyUser(UserLoginInput user) {
+    public UserAuthResponse verifyUser(UserLoginInput user) throws BadCredentialsException {
         Authentication authentication = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.email(), user.password()));
-        return authentication.isAuthenticated() ? jwtService.generateToken(user.email()) : "Failure";
+        UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
+        User userEntity = principal.getUser();
+
+
+        if (authentication.isAuthenticated()) {
+            return UserAuthResponse.builder()
+                    .id(userEntity.getId())
+                    .email(userEntity.getEmail())
+                    .username(userEntity.getUsername())
+                    .createdAt(userEntity.getCreatedAt())
+                    .token(jwtService.generateToken(user.email()))
+                    .build();
+        } else {
+            throw new BadCredentialsException("Bad credentials");
+        }
     }
 
     public User updateUser(UserUpdateInput user) {
