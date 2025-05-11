@@ -4,7 +4,7 @@ type Mutation {
     deleteComment(commentId: ID!): Boolean
 
     registerUser(user: UserInput!): User
-    loginUser(user: UserLoginInput!): User
+    loginUser(user: UserLoginInput!): UserAuthResponse
     updateUser(user: UserUpdateInput!): User
     deleteUser(userId: ID!): Boolean
 }

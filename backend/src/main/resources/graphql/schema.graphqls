@@ -13,5 +13,12 @@ type User {
     username: String
     email: String
     createdAt: LocalDateTime
+}
+
+type UserAuthResponse {
+    id: ID!
+    username: String
+    email: String
+    createdAt: LocalDateTime
     token: String!
 }
