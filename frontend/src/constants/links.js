@@ -29,7 +29,8 @@ const externalLinks = [
 const contactEmail = "pablovisuals.kontakt@gmail.com";
 const pagesUrl = {
   home: "/",
-  adminPanel: "admin",
+  adminPanel: "/admin",
+  login: "/login",
 };
 
-export { externalLinks, navLinks, contactEmail, pagesUrl};
+export { externalLinks, navLinks, contactEmail, pagesUrl };

@@ -2,7 +2,7 @@ import * as RadixToast from "@radix-ui/react-toast";
 import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 
-const Toast = ({ message }) => {
+const ErrorToast = ({ message }) => {
   const [open, setOpen] = useState(!!message);
 
   return (
@@ -10,9 +10,9 @@ const Toast = ({ message }) => {
       <RadixToast.Root
         open={open}
         onOpenChange={setOpen}
-        className="bg-secondary text-white px-4 py-2 rounded shadow-md fixed bottom-4 right-4 z-50"
+        className="relative bg-secondary text-white px-4 py-2 rounded-sm shadow-md z-50"
       >
-        <RadixToast.Close>
+        <RadixToast.Close className="absolute right-2 text-dark dark:text-light hover:scale-125 transition">
           <RiCloseLargeFill />
         </RadixToast.Close>
         <RadixToast.Description>{message}</RadixToast.Description>
@@ -22,4 +22,4 @@ const Toast = ({ message }) => {
   );
 };
 
-export default Toast;
+export default ErrorToast;

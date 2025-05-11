@@ -10,7 +10,7 @@ import CommentForm from "./forms/CommentForm";
 import RegisterForm from "./forms/RegisterForm";
 import LoginForm from "./forms/LoginForm";
 import Modal from "./Modal";
-import Toast from "./Toast";
+import ErrorToast from "./ErrorToast";
 
 export {
   Slider,
@@ -26,5 +26,5 @@ export {
   RegisterForm,
   LoginForm,
   Modal,
-  Toast,
+  ErrorToast,
 };

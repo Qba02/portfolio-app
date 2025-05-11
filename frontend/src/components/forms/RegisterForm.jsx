@@ -5,7 +5,7 @@ import {
   PasswordInput,
   NameInput,
 } from "./inputs";
-import { Toast, Loader } from "@components/index";
+import { ErrorToast, Loader } from "@components/index";
 import { useRegisterUser } from "@hooks/useRegisterUser";
 
 const RegisterForm = () => {
@@ -57,7 +57,7 @@ const RegisterForm = () => {
         password={password}
       />
 
-      {error && <Toast message={"Nie udało się zarejestrować"} />}
+      {error && <ErrorToast message={"Nie udało się zarejestrować"} />}
 
       {loading ? (
         <Loader />

@@ -1,12 +1,7 @@
-import React from "react";
-import { LoginForm, RegisterForm, CommentForm } from "@components";
-
 function AdminPanelPage() {
   return (
     <>
-      <LoginForm />
-      <RegisterForm />
-      <CommentForm/>
+      <h1 className="text-center">PANEL ADMINISTRATORA</h1>
     </>
   );
 }

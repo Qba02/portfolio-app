@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { EmailInput, PasswordInput } from "./inputs";
 import { useLoginUser } from "@hooks/useLoginUser";
-import { Toast, Loader } from "@components/index";
+import { ErrorToast, Loader } from "@components/index";
 
 const LoginForm = () => {
   const { handleLogin, error, loading } = useLoginUser();
@@ -25,7 +25,7 @@ const LoginForm = () => {
       className="flex flex-col p-6 gap-8 justify-around"
     >
       <h2 className="text-center text-2xl">
-        Zaloguj się do panelu administratora
+        Zaloguj się
       </h2>
 
       <EmailInput
@@ -40,7 +40,7 @@ const LoginForm = () => {
       />
       {console.log(error)}
       {error && (
-        <Toast
+        <ErrorToast
           message={
             error.message === "Bad credentials"
               ? "Błędny email lub hasło"
