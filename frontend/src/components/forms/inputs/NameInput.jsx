@@ -1,5 +1,3 @@
-import React from "react";
-
 const NameInput = ({
   register,
   error,
@@ -7,7 +5,6 @@ const NameInput = ({
   label = "Nazwa użytkownika",
   id,
 }) => {
-
   return (
     <div className="relative">
       <input

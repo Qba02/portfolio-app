@@ -22,4 +22,4 @@ const LOGIN_USER = gql`
   }
 `;
 
-export { REGISTER_USER, LOGIN_USER };
+export { LOGIN_USER, REGISTER_USER };

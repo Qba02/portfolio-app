@@ -1,8 +1,7 @@
-import React, { useState } from "react";
 import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 import { SiYoutube } from "react-icons/si";
-import { IoIosArrowDropright } from "react-icons/io";
-import { IoIosArrowDropleft } from "react-icons/io";
 
 const MAX_VISIBILITY = 3;
 

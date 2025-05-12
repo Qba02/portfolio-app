@@ -1,11 +1,9 @@
-import { React, useState } from "react";
-import { Link } from "react-scroll";
-import { SiYoutube } from "react-icons/si";
-import { SiInstagram } from "react-icons/si";
+import { contactEmail, externalLinks } from "@constants/links";
+import { useState } from "react";
 import { MdMail } from "react-icons/md";
 import { RiArrowUpSLine } from "react-icons/ri";
-import { contactEmail } from "../constants/links";
-import { externalLinks } from "../constants/links";
+import { SiInstagram, SiYoutube } from "react-icons/si";
+import { Link } from "react-scroll";
 
 const Footer = () => {
   const [copied, setCopied] = useState(false);
@@ -51,7 +49,10 @@ const Footer = () => {
           <span className="absolute top-[-50%] -translate-y-1/2 dark:text-light text-dark text-sm">
             {copied ? <>Skopiowano&nbsp;email</> : ""}
           </span>
-          <MdMail onClick={copyToClipboard} className="w-6 h-6 cursor-pointer"></MdMail>
+          <MdMail
+            onClick={copyToClipboard}
+            className="w-6 h-6 cursor-pointer"
+          ></MdMail>
         </div>
       </div>
       <div>

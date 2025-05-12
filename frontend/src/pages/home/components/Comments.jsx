@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { comments } from "@constants/content";
-import { responsiveText } from "@styles/responsiveText";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 import { useQuery } from "@apollo/client";
+import { CommentCard, CommentForm, Loader, Modal } from "@components";
+import { comments } from "@constants/content";
 import { GET_APPROVED_COMMENTS } from "@services/queries";
-import { Loader, Modal, CommentCard, CommentForm } from "@components";
+import { responsiveText } from "@styles/responsiveText";
 import { formatDistanceToNow } from "date-fns";
 import { pl } from "date-fns/locale";
+import { useState } from "react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const Comments = () => {
   const { data, loading, error } = useQuery(GET_APPROVED_COMMENTS);
@@ -62,7 +62,7 @@ const Comments = () => {
       </div>
 
       <Modal open={isOpen} onOpenChange={setIsOpen} title="Dodaj komentarz">
-        <CommentForm onFormSubmit={setIsOpen}/>
+        <CommentForm onFormSubmit={setIsOpen} />
       </Modal>
     </section>
   );

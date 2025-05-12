@@ -1,8 +1,7 @@
-import React from "react";
+import { ErrorToast, Loader } from "@components/index";
+import { useLoginUser } from "@hooks/useLoginUser";
 import { useForm } from "react-hook-form";
 import { EmailInput, PasswordInput } from "./inputs";
-import { useLoginUser } from "@hooks/useLoginUser";
-import { ErrorToast, Loader } from "@components/index";
 
 const LoginForm = () => {
   const { handleLogin, error, loading } = useLoginUser();
@@ -24,9 +23,7 @@ const LoginForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col p-6 gap-8 justify-around"
     >
-      <h2 className="text-center text-2xl">
-        Zaloguj się
-      </h2>
+      <h2 className="text-center text-2xl">Zaloguj się</h2>
 
       <EmailInput
         register={register}

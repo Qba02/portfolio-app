@@ -1,11 +1,10 @@
-import React from "react";
 import { hero } from "@constants/content";
-import { responsiveText } from "@styles/responsiveText";
-import { SiYoutube, SiInstagram  } from "react-icons/si";
 import { externalLinks } from "@constants/links";
-import { Link } from "react-scroll";
-import { motion } from "framer-motion";
 import { textFadeUp } from "@styles/animations";
+import { responsiveText } from "@styles/responsiveText";
+import { motion } from "framer-motion";
+import { SiInstagram, SiYoutube } from "react-icons/si";
+import { Link } from "react-scroll";
 
 const Hero = () => {
   const ytLink = externalLinks.find((link) => link.id === "yt");
@@ -30,7 +29,6 @@ const Hero = () => {
         dark:left-[5%] dark:sm:left-[7%] dark:md:left-[10%] dark:lg:left-[15%]
         bottom-[10%] sm:bottom-[20%] lg:bottom-[40%] sm:translate-y-1/2"
       >
-
         <motion.h1
           variants={textFadeUp}
           className={`${responsiveText.heroHeading} text-center w-fit`}
@@ -44,7 +42,10 @@ const Hero = () => {
           {hero.content}
         </motion.p>
 
-        <motion.div variants={textFadeUp} className="flex gap-1 sm:gap-6 flex-wrap justify-around sm:justify-start mt-5 w-full">
+        <motion.div
+          variants={textFadeUp}
+          className="flex gap-1 sm:gap-6 flex-wrap justify-around sm:justify-start mt-5 w-full"
+        >
           <Link
             to="contact"
             smooth={true}

@@ -1,6 +1,5 @@
-import React from "react";
 import { useForm } from "react-hook-form";
-import { NameInput, EmailInput, TextInput } from "./inputs";
+import { EmailInput, NameInput, TextInput } from "./inputs";
 
 function ContactForm() {
   const {

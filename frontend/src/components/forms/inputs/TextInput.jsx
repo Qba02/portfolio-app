@@ -1,5 +1,3 @@
-import React from "react";
-
 const TextInput = ({ register, error, name, label, id, rows }) => {
   return (
     <div className="relative">
@@ -9,7 +7,9 @@ const TextInput = ({ register, error, name, label, id, rows }) => {
         type="text"
         name={label}
         placeholder={label}
-        className={`peer form-input custom-scroll ${error ? "form-error-input" : ""}`}
+        className={`peer form-input custom-scroll ${
+          error ? "form-error-input" : ""
+        }`}
         {...register(name, {
           required: "Wymagane",
         })}

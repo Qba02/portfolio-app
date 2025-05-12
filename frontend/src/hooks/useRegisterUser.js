@@ -1,9 +1,9 @@
 import { useMutation } from "@apollo/client";
-import { REGISTER_USER } from "@services/mutations";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "@context/authContext";
 import { pagesUrl } from "@constants/links";
+import { AuthContext } from "@context/authContext";
+import { REGISTER_USER } from "@services/mutations";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const useRegisterUser = () => {
   const navigate = useNavigate();

@@ -1,13 +1,13 @@
+import ConfirmPasswordInput from "./ConfirmPasswordInput";
+import EmailInput from "./EmailInput";
 import NameInput from "./NameInput";
 import PasswordInput from "./PasswordIput";
-import EmailInput from "./EmailInput";
-import ConfirmPasswordInput from "./ConfirmPasswordInput";
 import TextInput from "./TextInput";
 
 export {
+  ConfirmPasswordInput,
+  EmailInput,
   NameInput,
   PasswordInput,
-  EmailInput,
-  ConfirmPasswordInput,
   TextInput,
 };

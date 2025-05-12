@@ -1,15 +1,13 @@
+import { IoIosPeople } from "react-icons/io";
+import { MdOutlineMusicVideo } from "react-icons/md";
+import { PiFilmReel, PiFilmStrip, PiVideoConference } from "react-icons/pi";
+import { RiAdvertisementLine } from "react-icons/ri";
 import {
   projectAd,
   projectDocument,
   projectMusic,
   projectPlot,
-} from "../assets/index";
-import { RiAdvertisementLine } from "react-icons/ri";
-import { MdOutlineMusicVideo } from "react-icons/md";
-import { PiFilmReel } from "react-icons/pi";
-import { PiFilmStrip } from "react-icons/pi";
-import { PiVideoConference } from "react-icons/pi";
-import { IoIosPeople } from "react-icons/io";
+} from "@assets/index";
 
 const hero = {
   title: "Paweł Kanik",
@@ -132,4 +130,4 @@ const comments = {
   tagline: "Podziel się swoją opinią",
 };
 
-export { aboutMe, experience, offer, projects, hero, contact, comments };
+export { aboutMe, comments, contact, experience, hero, offer, projects };

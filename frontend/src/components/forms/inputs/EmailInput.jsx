@@ -1,5 +1,3 @@
-import React from "react";
-
 const EmailInput = ({
   register,
   error,

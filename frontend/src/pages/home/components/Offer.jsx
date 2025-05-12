@@ -1,11 +1,10 @@
-import React from "react";
+import { FlipCard } from "@components/index";
 import { offer } from "@constants/content";
+import { gridContainerMotions } from "@styles/animations";
 import { responsiveText } from "@styles/responsiveText";
-import { BsExclamationCircle } from "react-icons/bs";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { gridContainerMotions } from "@styles/animations";
-import { FlipCard } from "@components/index";
+import { BsExclamationCircle } from "react-icons/bs";
 
 const Offer = () => {
   const sectionRef = useRef(null);
@@ -17,7 +16,9 @@ const Offer = () => {
         {offer.title}
         <span>{offer.tagline}</span>
       </h2>
-      <p className="mb-4 text-center text-dark dark:text-light lg:text-xl" >Kliknij na karte by dowiedzie się więcej!</p>
+      <p className="mb-4 text-center text-dark dark:text-light lg:text-xl">
+        Kliknij na karte by dowiedzie się więcej!
+      </p>
       <motion.div
         variants={gridContainerMotions}
         initial="hidden"

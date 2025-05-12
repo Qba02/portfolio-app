@@ -1,9 +1,8 @@
-import Navbar from "./Navbar";
-import Hero from "./Hero";
 import About from "./About";
+import Comments from "./Comments";
+import Contact from "./Contact";
+import Hero from "./Hero";
 import Offer from "./Offer";
 import Projects from "./Projects";
-import Contact from "./Contact";
-import Comments from "./Comments";
 
-export { Navbar, Hero, About, Offer, Projects, Contact, Comments };
+export { About, Comments, Contact, Hero, Offer, Projects };

@@ -1,12 +1,12 @@
+import { ErrorToast, Loader } from "@components/index";
+import { useRegisterUser } from "@hooks/useRegisterUser";
 import { useForm } from "react-hook-form";
 import {
   ConfirmPasswordInput,
   EmailInput,
-  PasswordInput,
   NameInput,
+  PasswordInput,
 } from "./inputs";
-import { ErrorToast, Loader } from "@components/index";
-import { useRegisterUser } from "@hooks/useRegisterUser";
 
 const RegisterForm = () => {
   const { handleRegister, error, loading } = useRegisterUser();

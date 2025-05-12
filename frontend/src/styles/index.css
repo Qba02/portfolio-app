@@ -162,7 +162,7 @@
   }
 
   .camera-loader {
-    @apply  m-auto dark:bg-light bg-dark w-24 h-16 rounded-lg relative animate-bounce;
+    @apply m-auto dark:bg-light bg-dark w-24 h-16 rounded-lg relative animate-bounce;
   }
 
   .camera-loader::after {

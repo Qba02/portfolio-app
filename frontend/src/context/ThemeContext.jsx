@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
 import { COLOR_MODE_KEY } from "@constants/localstorage";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 

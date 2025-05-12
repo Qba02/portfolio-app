@@ -1,30 +1,32 @@
-import { Slider, SliderCard } from "./Slider";
-import EnvelopeCanvas from "./EnvelopeCanvas";
-import Loader from "./Loader";
-import FlipCard from "./FlipCard";
-import ThemeSwitch from "./ThemeSwitch";
-import Footer from "./Footer";
-import CommentCard from "./CommentCard";
-import ContactForm from "./forms/ContactForm";
+import CommentCard from "./cards/CommentCard";
+import FlipCard from "./cards/FlipCard";
+import ErrorToast from "./common/ErrorToast";
+import Loader from "./common/Loader";
+import Modal from "./common/Modal";
+import ThemeSwitch from "./common/ThemeSwitch";
 import CommentForm from "./forms/CommentForm";
-import RegisterForm from "./forms/RegisterForm";
+import ContactForm from "./forms/ContactForm";
 import LoginForm from "./forms/LoginForm";
-import Modal from "./Modal";
-import ErrorToast from "./ErrorToast";
+import RegisterForm from "./forms/RegisterForm";
+import Footer from "./layout/Footer";
+import Navbar from "./layout/Navbar";
+import EnvelopeCanvas from "./visuals/EnvelopeCanvas";
+import { Slider, SliderCard } from "./visuals/Slider";
 
 export {
-  Slider,
-  SliderCard,
-  EnvelopeCanvas,
-  ContactForm,
-  Loader,
-  FlipCard,
-  ThemeSwitch,
-  Footer,
   CommentCard,
   CommentForm,
-  RegisterForm,
+  ContactForm,
+  EnvelopeCanvas,
+  ErrorToast,
+  FlipCard,
+  Footer,
+  Loader,
   LoginForm,
   Modal,
-  ErrorToast,
+  Navbar,
+  RegisterForm,
+  Slider,
+  SliderCard,
+  ThemeSwitch,
 };

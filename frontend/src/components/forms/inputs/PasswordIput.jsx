@@ -1,5 +1,3 @@
-import React from "react";
-
 const PasswordInput = ({
   register,
   error,
@@ -7,7 +5,6 @@ const PasswordInput = ({
   label = "Hasło",
   id,
 }) => {
-
   return (
     <div className="relative">
       <input

@@ -1,6 +1,6 @@
-import React, { useReducer, createContext } from "react";
-import { jwtDecode } from "jwt-decode";
 import { TOKEN_KEY } from "@constants/localstorage";
+import { jwtDecode } from "jwt-decode";
+import { createContext, useReducer } from "react";
 
 const initialState = {
   user: null,

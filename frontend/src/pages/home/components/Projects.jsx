@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
 import { Slider, SliderCard } from "@components/index";
 import { projects } from "@constants/content";
+import { cardFadeUp } from "@styles/animations";
 import { responsiveText } from "@styles/responsiveText";
 import { motion, useInView } from "framer-motion";
-import { cardFadeUp } from "@styles/animations";
+import { useRef } from "react";
 
 const Projects = () => {
   const sectionRef = useRef(null);

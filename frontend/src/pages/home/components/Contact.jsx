@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
-import { EnvelopeCanvas, ContactForm } from "@components/index";
-import { responsiveText } from "@styles/responsiveText";
+import { ContactForm, EnvelopeCanvas } from "@components/index";
 import { contact } from "@constants/content";
-import { useInView, motion } from "framer-motion";
 import { cardFadeLeft, cardFadeRight } from "@styles/animations";
+import { responsiveText } from "@styles/responsiveText";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Contact = () => {
   const sectionRef = useRef(null);

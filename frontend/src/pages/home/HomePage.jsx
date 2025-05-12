@@ -1,13 +1,11 @@
-import React from "react";
-
+import { Navbar } from "@components/index.js";
 import {
-  Navbar,
-  Hero,
   About,
+  Comments,
+  Contact,
+  Hero,
   Offer,
   Projects,
-  Contact,
-  Comments,
 } from "./components/index.js";
 
 const HomePage = () => {

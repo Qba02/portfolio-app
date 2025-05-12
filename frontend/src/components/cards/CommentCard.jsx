@@ -1,5 +1,3 @@
-import React from "react";
-
 const CommentCard = ({ author, date, content }) => {
   return (
     <div className="mb-6">

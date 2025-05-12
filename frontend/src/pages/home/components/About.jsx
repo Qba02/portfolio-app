@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
-import { aboutMe } from "@constants/content";
-import { responsiveText } from "@styles/responsiveText";
 import { profilePic } from "@assets/index";
-import { motion, useInView } from "framer-motion";
+import { aboutMe } from "@constants/content";
 import { cardFadeLeft, cardFadeRight } from "@styles/animations";
+import { responsiveText } from "@styles/responsiveText";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -29,7 +29,9 @@ const About = () => {
           <p className={`${responsiveText.sectionContent} text-justify`}>
             {aboutMe.content}
           </p>
-          <p className={`text-gray-500 text-justify mt-2 text-xs sm:text-sm lg:text-base xl:text-lg`}>
+          <p
+            className={`text-gray-500 text-justify mt-2 text-xs sm:text-sm lg:text-base xl:text-lg`}
+          >
             {aboutMe.subcontent}
           </p>
           <p

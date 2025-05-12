@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage, AdminPanelPage, NotFoundPage, LoginPage } from "./pages/index";
-import { Loader, Footer } from "./components/index";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Footer, Loader } from "./components/index";
 import { pagesUrl } from "./constants/links";
 import PrivateRoute from "./context/PrivateRoute";
+import {
+  AdminPanelPage,
+  HomePage,
+  LoginPage,
+  NotFoundPage,
+} from "./pages/index";
 
 const App = () => {
   const [loading, setLoading] = useState(true);

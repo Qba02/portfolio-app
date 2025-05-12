@@ -1,6 +1,5 @@
-import React from "react";
-import { NameInput, TextInput } from "./inputs";
 import { useForm } from "react-hook-form";
+import { NameInput, TextInput } from "./inputs";
 
 const CommentForm = ({ onFormSubmit }) => {
   const {

@@ -1,10 +1,16 @@
-import React from "react";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 const Model = () => {
   const { scene } = useGLTF("./models/koperta.glb");
-  return <primitive object={scene} position={[0, -0.25, 0]} scale={1} rotation-x={1.57} />;
+  return (
+    <primitive
+      object={scene}
+      position={[0, -0.25, 0]}
+      scale={1}
+      rotation-x={1.57}
+    />
+  );
 };
 
 const FixedLight = () => {
