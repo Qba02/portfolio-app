@@ -17,7 +17,7 @@ const Navbar = ({ children }) => {
 
   return (
     <nav
-      className={`fixed top-0 z-50 flex items-center justify-center w-full py-3 px-10 transition-all duration-300 ease-in ${
+      className={`fixed top-0 z-50 flex items-center justify-between w-full py-3 px-10 transition-all duration-300 ease-in ${
         onTop
           ? "bg-transparent py-8"
           : "bg-light/80 border-b-[1px] border-dark dark:border-0 dark:bg-darkGrey/80 dark:nav-shadow backdrop-blur-md"

@@ -1,7 +1,18 @@
+import { Navbar } from "@components";
+import { CommentsManager, PanelMenu } from "./components";
+
 function AdminPanelPage() {
   return (
     <>
-      <h1 className="text-center">PANEL ADMINISTRATORA</h1>
+      <div>
+        <Navbar>
+          <PanelMenu />
+        </Navbar>
+      </div>
+
+      <div>
+        <CommentsManager />
+      </div>
     </>
   );
 }
