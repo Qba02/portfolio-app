@@ -14,6 +14,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const Comments = () => {
   const { data, loading, error } = useQuery(GET_APPROVED_COMMENTS);
   const [isOpen, setIsOpen] = useState(false);
+  const [commentDraft, setCommentDraft] = useState(null);
+
+  const handleFormSubmit = (formData) => {
+    setCommentDraft(formData);
+    setIsOpen(false);
+  };
 
   if (loading) return <Loader />;
   if (error) return <></>;
@@ -50,19 +56,24 @@ const Comments = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="flex justify-center md:justify-end mt-10 ">
+        <div className="flex justify-center md:justify-end mt-10 gap-3">
           <button
             onClick={() => setIsOpen(true)}
             className="rounded-md p-3 px-8 text-light font-medium dark:text-dark
                   bg-dark dark:bg-light transition duration-300 ease-in-out hover:scale-105"
           >
             Skomentuj
+            {commentDraft && <span className="block text-xs">lub aktualizuj poprzedni komentarz</span>}
           </button>
         </div>
       </div>
 
       <Modal open={isOpen} onOpenChange={setIsOpen} title="Dodaj komentarz">
-        <CommentForm onFormSubmit={setIsOpen} />
+        <CommentForm
+          onFormSubmit={handleFormSubmit}
+          savedComment={commentDraft}
+          cleanForm={setCommentDraft}
+        />
       </Modal>
     </section>
   );

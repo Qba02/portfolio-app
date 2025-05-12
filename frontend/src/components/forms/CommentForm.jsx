@@ -1,17 +1,29 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { NameInput, TextInput } from "./inputs";
+import { MdCleaningServices, MdOutlineCleaningServices } from "react-icons/md";
 
-const CommentForm = ({ onFormSubmit }) => {
+const CommentForm = ({ onFormSubmit, savedComment, cleanForm }) => {
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    onFormSubmit(false);
+    // TODO : useCreateComment
+    onFormSubmit(data);
   };
+
+  useEffect(() => {
+    if (savedComment) {
+      setValue("name", savedComment.name);
+      setValue("comment", savedComment.comment);
+    }
+  }, [savedComment, setValue]);
 
   return (
     <form
@@ -34,9 +46,25 @@ const CommentForm = ({ onFormSubmit }) => {
         rows={7}
       />
 
-      <button type="submit" className="form-submit-button">
-        Wyślij komenentarz
+      <button
+        onClick={() => {
+          cleanForm(null);
+          reset();
+        }}
+        className="inset-0 flex justify-center items-center"
+      >
+        <MdCleaningServices
+          title="Wyczyść formularz"
+          className="dark:text-light fixed w-6 h-6
+           hover:scale-110 hover:rotate-12 transition-all duration-300 ease-in"
+        />
       </button>
+
+      <div className="flex ">
+        <button type="submit" className="form-submit-button">
+          {savedComment ? "Aktualizuj" : "Nowy komentarz"}
+        </button>
+      </div>
     </form>
   );
 };
