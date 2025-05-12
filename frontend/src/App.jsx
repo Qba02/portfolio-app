@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Footer, Loader } from "./components/index";
+import { Loader } from "./components/index";
 import { pagesUrl } from "./constants/links";
 import PrivateRoute from "./context/PrivateRoute";
 import {
@@ -41,7 +41,6 @@ const App = () => {
               />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
-            <Footer></Footer>
           </>
         )}
       </main>

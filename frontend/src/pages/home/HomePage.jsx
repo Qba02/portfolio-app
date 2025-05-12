@@ -1,18 +1,21 @@
-import { Navbar } from "@components/index.js";
+import { Navbar, Footer } from "@components/index";
 import {
   About,
   Comments,
   Contact,
   Hero,
+  HomeMenu,
   Offer,
   Projects,
-} from "./components/index.js";
+} from "./components/index";
 
 const HomePage = () => {
   return (
     <>
       <div>
-        <Navbar />
+        <Navbar>
+          <HomeMenu />
+        </Navbar>
         <Hero></Hero>
       </div>
 
@@ -23,6 +26,8 @@ const HomePage = () => {
         <Comments />
         <Contact />
       </div>
+
+      <Footer></Footer>
     </>
   );
 };
