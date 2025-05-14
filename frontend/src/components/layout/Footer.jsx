@@ -1,4 +1,4 @@
-import { contactEmail, externalLinks } from "@constants/links";
+import { CONTACT_EMAIL, EXTERNAL_LINKS } from "@constants/links";
 import { useState } from "react";
 import { MdMail } from "react-icons/md";
 import { RiArrowUpSLine } from "react-icons/ri";
@@ -8,12 +8,12 @@ import { Link } from "react-scroll";
 const Footer = () => {
   const [copied, setCopied] = useState(false);
 
-  const ytLink = externalLinks.find((link) => link.id === "yt");
-  const instaLink = externalLinks.find((link) => link.id === "insta");
+  const ytLink = EXTERNAL_LINKS.find((link) => link.id === "yt");
+  const instaLink = EXTERNAL_LINKS.find((link) => link.id === "insta");
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(contactEmail);
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch (err) {

@@ -1,5 +1,5 @@
-import { profilePic } from "@assets/index";
-import { aboutMe } from "@constants/content";
+import { profilePic } from "@assets";
+import { ABOUT_ME } from "@constants/content";
 import { cardFadeLeft, cardFadeRight } from "@styles/animations";
 import { responsiveText } from "@styles/responsiveText";
 import { motion, useInView } from "framer-motion";
@@ -12,7 +12,7 @@ const About = () => {
   return (
     <section ref={sectionRef} id="about" className="section">
       <h2 className={`${responsiveText.sectionHeading} section-title`}>
-        {aboutMe.title} <span>{aboutMe.tagline}</span>
+        {ABOUT_ME.title} <span>{ABOUT_ME.tagline}</span>
       </h2>
       <motion.div
         initial="hidden"
@@ -24,24 +24,24 @@ const About = () => {
           className="w-full mb-10 lg:w-[50%] lg:mb-0"
         >
           <p className="text-base lg:text-xl tracking-[4px] text-center uppercase">
-            {aboutMe.subtitle}
+            {ABOUT_ME.subtitle}
           </p>
           <p className={`${responsiveText.sectionContent} text-justify`}>
-            {aboutMe.content}
+            {ABOUT_ME.content}
           </p>
           <p
             className={`text-gray-500 text-justify mt-2 text-xs sm:text-sm lg:text-base xl:text-lg`}
           >
-            {aboutMe.subcontent}
+            {ABOUT_ME.subcontent}
           </p>
           <p
             className={`${responsiveText.sectionContent} text-center italic mt-1 sm:mt-2 lg:mt-5`}
           >
-            {aboutMe.quote}
+            {ABOUT_ME.quote}
             <span
               className={`${responsiveText.sectionContent} not-italic block`}
             >
-              {aboutMe.quoteAuthor}
+              {ABOUT_ME.quoteAuthor}
             </span>
           </p>
         </motion.div>

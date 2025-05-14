@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Loader } from "./components/index";
-import { pagesUrl } from "./constants/links";
+import { PAGES_URL } from "./constants/links";
 import PrivateRoute from "./context/PrivateRoute";
 import {
   AdminPanelPage,
@@ -29,10 +29,10 @@ const App = () => {
         ) : (
           <>
             <Routes>
-              <Route path={pagesUrl.login} element={<LoginPage />} />
-              <Route path={pagesUrl.home} element={<HomePage />} />
+              <Route path={PAGES_URL.login} element={<LoginPage />} />
+              <Route path={PAGES_URL.home} element={<HomePage />} />
               <Route
-                path={pagesUrl.adminPanel}
+                path={PAGES_URL.adminPanel}
                 element={
                   <PrivateRoute>
                     <AdminPanelPage />

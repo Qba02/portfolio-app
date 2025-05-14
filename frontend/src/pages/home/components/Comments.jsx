@@ -6,7 +6,7 @@ import {
   Loader,
   Modal,
 } from "@components";
-import { comments } from "@constants/content";
+import { COMMENTS } from "@constants/content";
 import { GET_APPROVED_COMMENTS } from "@services/queries";
 import { responsiveText } from "@styles/responsiveText";
 import { formatDistanceToNow } from "date-fns";
@@ -29,8 +29,8 @@ const Comments = () => {
   return (
     <section id="comments" className="section">
       <h2 className={`${responsiveText.sectionHeading} section-title`}>
-        {comments.title}
-        <span>{comments.tagline}</span>
+        {COMMENTS.title}
+        <span>{COMMENTS.tagline}</span>
       </h2>
       <div>
         <Swiper

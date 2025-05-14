@@ -1,5 +1,5 @@
-import { ContactForm, EnvelopeCanvas } from "@components/index";
-import { contact } from "@constants/content";
+import { ContactForm, EnvelopeCanvas } from "@components";
+import { CONTACT } from "@constants/content";
 import { cardFadeLeft, cardFadeRight } from "@styles/animations";
 import { responsiveText } from "@styles/responsiveText";
 import { motion, useInView } from "framer-motion";
@@ -12,8 +12,8 @@ const Contact = () => {
   return (
     <section ref={sectionRef} id="contact" className="section">
       <h2 className={`${responsiveText.sectionHeading} section-title`}>
-        {contact.title}
-        <span>{contact.tagline}</span>
+        {CONTACT.title}
+        <span>{CONTACT.tagline}</span>
       </h2>
       <motion.div
         initial="hidden"

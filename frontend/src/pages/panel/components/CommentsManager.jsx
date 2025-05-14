@@ -1,5 +1,5 @@
 import { responsiveText } from "@styles/responsiveText";
-import { commentsManager } from "@constants/panelContent";
+import { COMMENTS_MANAGER } from "@constants/panelContent";
 
 function CommentsManager() {
   return (
@@ -7,13 +7,13 @@ function CommentsManager() {
       <h2
         className={`${responsiveText.sectionHeading} scale-75 text-base text-center section-title`}
       >
-        {commentsManager.title}
-        <span>{commentsManager.tagline}</span>
+        {COMMENTS_MANAGER.title}
+        <span>{COMMENTS_MANAGER.tagline}</span>
       </h2>
       <div className="flex col  justify-between">
-        <div>{commentsManager.commentsApproved}</div>
-        <div>{commentsManager.commentsNotApproved}</div>
-        <div>{commentsManager.commentsToDelete}</div>
+        {/* <div>{COMMENTS_MANAGER.commentsApproved}</div>
+        <div>{COMMENTS_MANAGER.commentsNotApproved}</div>
+        <div>{COMMENTS_MANAGER.commentsToDelete}</div> */}
       </div>
     </main>
   );

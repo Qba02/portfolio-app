@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { pagesUrl } from "@constants/links";
+import { PAGES_URL } from "@constants/links";
 import { AuthContext } from "@context/authContext";
 import { LOGIN_USER } from "@services/mutations";
 import { useContext } from "react";
@@ -12,7 +12,7 @@ export const useLoginUser = () => {
   const [loginUser, { loading, error, data }] = useMutation(LOGIN_USER, {
     onCompleted: ({ loginUser }) => {
       context.login(loginUser);
-      navigate(pagesUrl.adminPanel);
+      navigate(PAGES_URL.adminPanel);
     },
   });
 

@@ -1,4 +1,4 @@
-import { Navbar, Footer } from "@components/index";
+import { Navbar, Footer } from "@components";
 import {
   About,
   Comments,

@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { pagesUrl } from "@constants/links";
+import { PAGES_URL } from "@constants/links";
 import { AuthContext } from "@context/authContext";
 import { REGISTER_USER } from "@services/mutations";
 import { useContext } from "react";
@@ -12,7 +12,7 @@ export const useRegisterUser = () => {
   const [registerUser, { loading, error, data }] = useMutation(REGISTER_USER, {
     onCompleted: ({ registerUser }) => {
       context.login(registerUser);
-      navigate(pagesUrl.adminPanel);
+      navigate(PAGES_URL.adminPanel);
     },
   });
 

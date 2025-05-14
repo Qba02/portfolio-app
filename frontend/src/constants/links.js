@@ -1,4 +1,4 @@
-const navLinks = [
+const NAV_LINKS = [
   {
     id: "about",
     title: "O mnie",
@@ -17,7 +17,7 @@ const navLinks = [
   },
 ];
 
-const externalLinks = [
+const EXTERNAL_LINKS = [
   { id: "yt", title: "YouTube", href: "https://www.youtube.com/@pablovisuals" },
   {
     id: "insta",
@@ -26,11 +26,11 @@ const externalLinks = [
   },
 ];
 
-const contactEmail = "pablovisuals.kontakt@gmail.com";
-const pagesUrl = {
+const CONTACT_EMAIL = "pablovisuals.kontakt@gmail.com";
+const PAGES_URL = {
   home: "/",
   adminPanel: "/admin",
   login: "/login",
 };
 
-export { externalLinks, navLinks, contactEmail, pagesUrl };
+export { EXTERNAL_LINKS, NAV_LINKS, CONTACT_EMAIL, PAGES_URL };

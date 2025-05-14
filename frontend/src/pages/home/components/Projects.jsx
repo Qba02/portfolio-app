@@ -1,5 +1,5 @@
-import { Slider, SliderCard } from "@components/index";
-import { projects } from "@constants/content";
+import { Slider, SliderCard } from "@components";
+import { PROJECTS } from "@constants/content";
 import { cardFadeUp } from "@styles/animations";
 import { responsiveText } from "@styles/responsiveText";
 import { motion, useInView } from "framer-motion";
@@ -12,7 +12,7 @@ const Projects = () => {
   return (
     <section ref={sectionRef} id="projects" className="section overflow-hidden">
       <h2 className={`${responsiveText.sectionHeading} section-title`}>
-        {projects.title} <span>{projects.tagline}</span>
+        {PROJECTS.title} <span>{PROJECTS.tagline}</span>
       </h2>
       <motion.div
         initial="hidden"
@@ -21,7 +21,7 @@ const Projects = () => {
       >
         <motion.div variants={cardFadeUp} className="relative w-[70%] h-full">
           <Slider>
-            {projects.points.map((project, index) => (
+            {PROJECTS.points.map((project, index) => (
               <SliderCard
                 key={index}
                 title={project.title}

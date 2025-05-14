@@ -1,5 +1,5 @@
-import { FlipCard } from "@components/index";
-import { offer } from "@constants/content";
+import { FlipCard } from "@components";
+import { OFFER } from "@constants/content";
 import { gridContainerMotions } from "@styles/animations";
 import { responsiveText } from "@styles/responsiveText";
 import { motion, useInView } from "framer-motion";
@@ -13,8 +13,8 @@ const Offer = () => {
   return (
     <section ref={sectionRef} id="offer" className="section">
       <h2 className={`${responsiveText.sectionHeading} section-title`}>
-        {offer.title}
-        <span>{offer.tagline}</span>
+        {OFFER.title}
+        <span>{OFFER.tagline}</span>
       </h2>
       <p className="mb-4 text-center text-dark dark:text-light lg:text-xl">
         Kliknij na karte by dowiedzie się więcej!
@@ -25,7 +25,7 @@ const Offer = () => {
         animate={isInView ? "show" : "hidden"}
         className="grid gap-[20px] grid-cols-[repeat(auto-fit,minmax(310px,1fr))] justify-center"
       >
-        {offer.points.map((offer, index) => (
+        {OFFER.points.map((offer, index) => (
           <FlipCard
             key={index}
             index={index}
@@ -41,7 +41,7 @@ const Offer = () => {
         className={`${responsiveText.sectionContent} relative text-center p-6 mt-8 border-[1px] border-tertiary rounded-lg`}
       >
         <BsExclamationCircle className="inline absolute -top-2 -left-2 w-7 h-7 text-tertiary dark:text-tertiary bg-light dark:bg-dark"></BsExclamationCircle>
-        {offer.description}
+        {OFFER.description}
       </p>
     </section>
   );

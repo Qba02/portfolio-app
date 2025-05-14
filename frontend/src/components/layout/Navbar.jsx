@@ -1,5 +1,5 @@
 import { logo, logoDark } from "@assets";
-import { ThemeSwitch } from "@components/index";
+import { ThemeSwitch } from "@components";
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 

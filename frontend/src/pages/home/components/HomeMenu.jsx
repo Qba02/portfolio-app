@@ -1,4 +1,4 @@
-import { navLinks } from "@constants/links";
+import { NAV_LINKS } from "@constants/links";
 import { cardFadeUp, gridContainerMotions } from "@styles/animations";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
@@ -12,7 +12,7 @@ function HomeMenu() {
         animate="show"
         className="hidden list-none md:flex items-center gap-12"
       >
-        {navLinks.map((link) => (
+        {NAV_LINKS.map((link) => (
           <motion.li key={link.id} variants={cardFadeUp}>
             <Link
               to={link.id}

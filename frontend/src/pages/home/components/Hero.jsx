@@ -1,5 +1,5 @@
-import { hero } from "@constants/content";
-import { externalLinks } from "@constants/links";
+import { HERO } from "@constants/content";
+import { EXTERNAL_LINKS } from "@constants/links";
 import { textFadeUp } from "@styles/animations";
 import { responsiveText } from "@styles/responsiveText";
 import { motion } from "framer-motion";
@@ -7,8 +7,8 @@ import { SiInstagram, SiYoutube } from "react-icons/si";
 import { Link } from "react-scroll";
 
 const Hero = () => {
-  const ytLink = externalLinks.find((link) => link.id === "yt");
-  const instaLink = externalLinks.find((link) => link.id === "insta");
+  const ytLink = EXTERNAL_LINKS.find((link) => link.id === "yt");
+  const instaLink = EXTERNAL_LINKS.find((link) => link.id === "insta");
 
   return (
     <section
@@ -33,13 +33,13 @@ const Hero = () => {
           variants={textFadeUp}
           className={`${responsiveText.heroHeading} text-center w-fit`}
         >
-          {hero.title}
+          {HERO.title}
         </motion.h1>
         <motion.p
           variants={textFadeUp}
           className={`${responsiveText.heroContent} text-justify mt-1 sm:mt-2 lg:mt-5 w-fit`}
         >
-          {hero.content}
+          {HERO.content}
         </motion.p>
 
         <motion.div
