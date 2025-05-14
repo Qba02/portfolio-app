@@ -176,6 +176,14 @@
     border-[6px] dark:border-dark border-light rounded-[50%];
   }
 
+  .success-toast {
+    @apply relative bg-green-500 text-white px-4 py-2 rounded-sm shadow-md z-50;
+  }
+
+  .error-toast {
+    @apply relative bg-secondary text-white px-4 py-2 rounded-sm shadow-md z-50;
+  }
+
   .flipcard-shadow-dark {
     box-shadow: 0px 10px 20px #000000;
     background: linear-gradient(rgba(255, 255, 255, 0.03), transparent);

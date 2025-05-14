@@ -1,4 +1,4 @@
-import { ErrorToast, Loader } from "@components/index";
+import { Toast, Loader } from "@components/index";
 import { useLoginUser } from "@hooks/useLoginUser";
 import { useForm } from "react-hook-form";
 import { EmailInput, PasswordInput } from "./inputs";
@@ -37,17 +37,18 @@ const LoginForm = () => {
       />
       {console.log(error)}
       {error && (
-        <ErrorToast
+        <Toast
           message={
             error.message === "Bad credentials"
               ? "Błędny email lub hasło"
               : "Nie udało się zalogować"
           }
+          error={true}
         />
       )}
 
       {loading ? (
-        <Loader />
+        <Loader scale={0.7} />
       ) : (
         <button type="submit" className="form-submit-button">
           Zaloguj się

@@ -1,4 +1,4 @@
-import { ErrorToast, Loader } from "@components/index";
+import { Toast, Loader } from "@components/index";
 import { useRegisterUser } from "@hooks/useRegisterUser";
 import { useForm } from "react-hook-form";
 import {
@@ -57,10 +57,10 @@ const RegisterForm = () => {
         password={password}
       />
 
-      {error && <ErrorToast message={"Nie udało się zarejestrować"} />}
+      {error && <Toast message="Nie udało się zarejestrować" error={true} />}
 
       {loading ? (
-        <Loader />
+        <Loader scale={0.7} />
       ) : (
         <button type="submit" className="form-submit-button">
           Zarejestruj się

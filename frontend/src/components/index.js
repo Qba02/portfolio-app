@@ -1,9 +1,9 @@
 import CommentCard from "./cards/CommentCard";
 import FlipCard from "./cards/FlipCard";
-import ErrorToast from "./common/ErrorToast";
 import Loader from "./common/Loader";
 import Modal from "./common/Modal";
 import ThemeSwitch from "./common/ThemeSwitch";
+import Toast from "./common/Toast";
 import CommentForm from "./forms/CommentForm";
 import ContactForm from "./forms/ContactForm";
 import LoginForm from "./forms/LoginForm";
@@ -18,7 +18,6 @@ export {
   CommentForm,
   ContactForm,
   EnvelopeCanvas,
-  ErrorToast,
   FlipCard,
   Footer,
   Loader,
@@ -29,4 +28,6 @@ export {
   Slider,
   SliderCard,
   ThemeSwitch,
+  Toast
 };
+

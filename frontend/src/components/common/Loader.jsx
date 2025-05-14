@@ -1,6 +1,11 @@
-const Loader = () => {
+const Loader = ({ scale = 1 }) => {
   return (
-    <div className="m-auto">
+    <div
+      className="m-auto"
+      style={{
+        transform: `scale(${scale})`,
+      }}
+    >
       <div className="camera-loader">
         <div
           aria-hidden="true"
