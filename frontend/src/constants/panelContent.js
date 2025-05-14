@@ -4,9 +4,9 @@ const COMMENTS_MANAGER = {
 };
 
 const COMMENTS_STATUS = [
-  { id: "approved", title: "Niezatwierdzone" },
-  { id: "notApproved", title: "Zatwierdzone" },
-  { id: "toDelete", title: "Usuń" },
+  { id: "approved", title: "Zatwierdzone" },
+  { id: "notApproved", title: "Niezatwierdzone" },
+  { id: "toDelete", title: "Do usunięcia" },
 ];
 
 export { COMMENTS_MANAGER, COMMENTS_STATUS };

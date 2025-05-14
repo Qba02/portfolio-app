@@ -1,7 +1,7 @@
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 
-function PanelMenu() {
+const PanelMenu = () => {
   return (
     <div className="w-full flex justify-end">
       <ul className="list-none items-center gap-12">
