@@ -12,10 +12,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.data.mongodb.core.query.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -69,11 +66,13 @@ public class CommentService {
         Optional.ofNullable(comment.message()).ifPresent(msg -> update.set("message", msg));
         Optional.ofNullable(comment.author()).ifPresent(auth -> update.set("author", auth));
 
-        return mongoTemplate.findAndModify(
+        Comment updated = mongoTemplate.findAndModify(
                 query,
                 update,
                 FindAndModifyOptions.options().returnNew(true),
                 Comment.class);
+
+        return Optional.ofNullable(updated).orElseThrow(() -> new NotFoundException("Comment", comment.id()));
     }
 
     public boolean deleteCommentById(String id) {
