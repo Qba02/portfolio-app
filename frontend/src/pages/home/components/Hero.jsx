@@ -50,10 +50,7 @@ const Hero = () => {
             to="contact"
             smooth={true}
             duration={100}
-            className={`cursor-pointer text-sm lg:text-lg border-[3px] rounded-md font-medium
-              border-secondary text-secondary py-2 px-3 xs:px-5 lg:px-7 
-              dark:hover:text-light dark:hover:border-light hover:text-dark hover:border-dark
-              transition duration-500 ease-in-out`}
+            className="secondary-button"
             offset={-120}
           >
             Kontakt
@@ -62,10 +59,7 @@ const Hero = () => {
             to="offer"
             smooth={true}
             duration={100}
-            className={`cursor-pointer text-sm lg:text-lg border-[3px] border-dark dark:border-light rounded-md font-medium 
-                 dark:bg-light bg-dark dark:text-dark text-light py-2 px-3 xs:px-5 lg:px-7 
-                  dark:hover:bg-transparent hover:bg-transparent dark:hover:border-light dark:hover:text-light hover:text-dark 
-                  transition duration-500 ease-in-out`}
+            className="primary-button"
             offset={-120}
           >
             &nbsp;Oferta&nbsp;

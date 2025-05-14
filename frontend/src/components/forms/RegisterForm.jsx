@@ -1,5 +1,5 @@
 import { Toast, Loader } from "@components/index";
-import { useRegisterUser } from "@hooks/useRegisterUser";
+import { useRegisterUser } from "@hooks";
 import { useForm } from "react-hook-form";
 import {
   ConfirmPasswordInput,

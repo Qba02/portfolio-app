@@ -22,4 +22,20 @@ const LOGIN_USER = gql`
   }
 `;
 
-export { LOGIN_USER, REGISTER_USER };
+const CREATE_COMMENT = gql`
+  mutation CreateComment($commentInput: CommentInput!) {
+    createComment(comment: $commentInput) {
+      id
+    }
+  }
+`;
+
+const UPDATE_COMMENT = gql`
+  mutation UpdateComment($commentUpdateInput: CommentUpdateInput!) {
+    updateComment(comment: $commentUpdateInput) {
+      id
+    }
+  }
+`;
+
+export { CREATE_COMMENT, LOGIN_USER, REGISTER_USER, UPDATE_COMMENT };

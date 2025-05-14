@@ -1,5 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { CommentCard, CommentForm, Loader, Modal } from "@components";
+import {
+  CommentCard,
+  CommentCreateForm,
+  CommentUpdateForm,
+  Loader,
+  Modal,
+} from "@components";
 import { comments } from "@constants/content";
 import { GET_APPROVED_COMMENTS } from "@services/queries";
 import { responsiveText } from "@styles/responsiveText";
@@ -13,13 +19,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Comments = () => {
   const { data, loading, error } = useQuery(GET_APPROVED_COMMENTS);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [isUpdateOpen, setIsUpdateOpen] = useState(false);
   const [commentDraft, setCommentDraft] = useState(null);
-
-  const handleFormSubmit = (formData) => {
-    setCommentDraft(formData);
-    setIsOpen(false);
-  };
 
   if (loading) return <Loader />;
   if (error) return <></>;
@@ -58,21 +60,41 @@ const Comments = () => {
         </Swiper>
         <div className="flex justify-center md:justify-end mt-10 gap-3">
           <button
-            onClick={() => setIsOpen(true)}
-            className="rounded-md p-3 px-8 text-light font-medium dark:text-dark
-                  bg-dark dark:bg-light transition duration-300 ease-in-out hover:scale-105"
+            onClick={() => setIsCreateOpen(true)}
+            className="primary-button"
           >
             Skomentuj
-            {commentDraft && <span className="block text-xs">lub aktualizuj poprzedni komentarz</span>}
           </button>
+
+          {commentDraft && (
+            <button
+              onClick={() => setIsUpdateOpen(true)}
+              className="secondary-button"
+            >
+              Aktualizuj
+            </button>
+          )}
         </div>
       </div>
 
-      <Modal open={isOpen} onOpenChange={setIsOpen} title="Dodaj komentarz">
-        <CommentForm
-          onFormSubmit={handleFormSubmit}
-          savedComment={commentDraft}
-          cleanForm={setCommentDraft}
+      <Modal
+        open={isCreateOpen}
+        onOpenChange={setIsCreateOpen}
+        title="Dodaj komentarz"
+        description="Formularz do dodawania komentarzy"
+      >
+        <CommentCreateForm onFormSubmit={setCommentDraft} />
+      </Modal>
+
+      <Modal
+        open={isUpdateOpen}
+        onOpenChange={setIsUpdateOpen}
+        title="Aktualizuj ostatni komentarz"
+        description="Formularz do aktualizowania komentarzy"
+      >
+        <CommentUpdateForm
+          onFormSubmit={setCommentDraft}
+          commentDraft={commentDraft}
         />
       </Modal>
     </section>

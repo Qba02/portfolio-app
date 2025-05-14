@@ -1,33 +1,22 @@
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { Loader, Toast, MotionToast } from "@components/index";
+import { MdCleaningServices } from "react-icons/md";
 import { NameInput, TextInput } from "./inputs";
-import { MdCleaningServices, MdOutlineCleaningServices } from "react-icons/md";
 
-const CommentForm = ({ onFormSubmit, savedComment, cleanForm }) => {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    reset,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-    // TODO : useCreateComment
-    onFormSubmit(data);
-  };
-
-  useEffect(() => {
-    if (savedComment) {
-      setValue("name", savedComment.name);
-      setValue("comment", savedComment.comment);
-    }
-  }, [savedComment, setValue]);
-
+const CommentFormView = ({
+  register,
+  errors,
+  onReset,
+  onSubmit,
+  loading,
+  error,
+  success,
+  errorMessage = "Wystąpił błąd",
+  successMessage = "Sukces",
+  submitButtonTitle = "Wyślij",
+}) => {
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       className="flex flex-col p-6 gap-8 justify-around"
     >
       <NameInput
@@ -47,10 +36,7 @@ const CommentForm = ({ onFormSubmit, savedComment, cleanForm }) => {
       />
 
       <button
-        onClick={() => {
-          cleanForm(null);
-          reset();
-        }}
+        onClick={onReset}
         className="inset-0 flex justify-center items-center"
       >
         <MdCleaningServices
@@ -60,13 +46,25 @@ const CommentForm = ({ onFormSubmit, savedComment, cleanForm }) => {
         />
       </button>
 
-      <div className="flex ">
+      <div className="h-1">
+        {error && (
+          <MotionToast>
+            <Toast message={errorMessage} error={true} />
+          </MotionToast>
+        )}
+        {success && (
+          <MotionToast>
+            <Toast message={successMessage} />
+          </MotionToast>
+        )}
+      </div>
+      <div className="flex">
         <button type="submit" className="form-submit-button">
-          {savedComment ? "Aktualizuj" : "Nowy komentarz"}
+          {submitButtonTitle}
         </button>
       </div>
     </form>
   );
 };
 
-export default CommentForm;
+export default CommentFormView;

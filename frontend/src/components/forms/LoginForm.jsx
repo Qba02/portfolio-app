@@ -1,5 +1,5 @@
-import { Toast, Loader } from "@components/index";
-import { useLoginUser } from "@hooks/useLoginUser";
+import { Loader, MotionToast, Toast } from "@components/index";
+import { useLoginUser } from "@hooks";
 import { useForm } from "react-hook-form";
 import { EmailInput, PasswordInput } from "./inputs";
 
@@ -37,14 +37,16 @@ const LoginForm = () => {
       />
       {console.log(error)}
       {error && (
-        <Toast
-          message={
-            error.message === "Bad credentials"
-              ? "Błędny email lub hasło"
-              : "Nie udało się zalogować"
-          }
-          error={true}
-        />
+        <MotionToast>
+          <Toast
+            message={
+              error.message === "Bad credentials"
+                ? "Błędny email lub hasło"
+                : "Nie udało się zalogować"
+            }
+            error={true}
+          />
+        </MotionToast>
       )}
 
       {loading ? (
