@@ -5,6 +5,8 @@ import projectAd from "./projects/ad.png";
 import projectDocument from "./projects/document.png";
 import projectPlot from "./projects/fictional.png";
 import projectMusic from "./projects/music-video.jpg";
+import light_404 from "./404_light.svg";
+import dark_404 from "./404_dark.svg";
 
 export {
   logo,
@@ -14,4 +16,6 @@ export {
   projectDocument,
   projectMusic,
   projectPlot,
+  light_404,
+  dark_404,
 };

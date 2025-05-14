@@ -11,7 +11,8 @@ import {
 } from "./pages/index";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {

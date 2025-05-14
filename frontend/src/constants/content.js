@@ -113,4 +113,10 @@ const COMMENTS = {
   tagline: "Podziel się swoją opinią",
 };
 
-export { ABOUT_ME, COMMENTS, CONTACT, EXPERIENCE, HERO, OFFER, PROJECTS };
+const NOT_FOUND_PAGE = {
+  title: "404",
+  tagline: "Oops! Strona, której szukasz, nie istnieje.",
+  returnToMainPage: "Wróć na stronę główną",
+};
+
+export { ABOUT_ME, COMMENTS, CONTACT, EXPERIENCE, HERO, OFFER, PROJECTS, NOT_FOUND_PAGE };
