@@ -2,9 +2,21 @@ import { gql } from "@apollo/client";
 
 const commentsAtFirstPageNumber = 6;
 
+const GET_ALL_COMMENTS = gql`
+  query Comments {
+    comments {
+      id
+      author
+      message
+      createdAt
+      approved
+    }
+  }
+`;
+
 const GET_APPROVED_COMMENTS = gql`
-query CommentsByApproved {
-    commentsByApproved(limit: ${commentsAtFirstPageNumber}) {
+query ApprovedComments {
+    approvedComments(limit: ${commentsAtFirstPageNumber}) {
         id
         author
         message
@@ -13,4 +25,4 @@ query CommentsByApproved {
 }
 `;
 
-export { GET_APPROVED_COMMENTS };
+export { GET_APPROVED_COMMENTS, GET_ALL_COMMENTS };

@@ -9,8 +9,6 @@ import {
 import { COMMENTS } from "@constants/content";
 import { GET_APPROVED_COMMENTS } from "@services/queries";
 import { responsiveText } from "@styles/responsiveText";
-import { formatDistanceToNow } from "date-fns";
-import { pl } from "date-fns/locale";
 import { useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -45,16 +43,9 @@ const Comments = () => {
           grabCursor={true}
           loop={true}
         >
-          {data.commentsByApproved.map((comment) => (
+          {data.approvedComments.map((comment) => (
             <SwiperSlide key={comment.id}>
-              <CommentCard
-                author={comment.author}
-                date={formatDistanceToNow(new Date(comment.createdAt), {
-                  addSuffix: true,
-                  locale: pl,
-                })}
-                content={comment.message}
-              />
+              <CommentCard comment={comment} />
             </SwiperSlide>
           ))}
         </Swiper>
