@@ -26,7 +26,7 @@ public class CommentController {
     }
 
     @QueryMapping
-    public List<Comment> commentsByApproved(@Argument int limit){
+    public List<Comment> approvedComments(@Argument int limit){
         return commentService.getLatestApprovedComments(limit);
     }
 
