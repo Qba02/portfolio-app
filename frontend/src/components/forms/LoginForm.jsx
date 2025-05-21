@@ -35,7 +35,6 @@ const LoginForm = () => {
         error={errors.password}
         id="loginPasswordInput"
       />
-      {console.log(error)}
       {error && (
         <MotionToast>
           <Toast

@@ -1,4 +1,5 @@
 import CommentCard from "./cards/CommentCard";
+import CommentCardDraggable from "./cards/CommentCardDraggable";
 import FlipCard from "./cards/FlipCard";
 import Loader from "./common/Loader";
 import Modal from "./common/Modal";
@@ -17,6 +18,7 @@ import { Slider, SliderCard } from "./visuals/Slider";
 
 export {
   CommentCard,
+  CommentCardDraggable,
   CommentCreateForm,
   CommentUpdateForm,
   ContactForm,
