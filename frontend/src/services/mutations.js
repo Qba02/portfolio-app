@@ -38,4 +38,16 @@ const UPDATE_COMMENT = gql`
   }
 `;
 
-export { CREATE_COMMENT, LOGIN_USER, REGISTER_USER, UPDATE_COMMENT };
+const DELETE_COMMENT = gql`
+  mutation DeleteComment($commentId: ID!) {
+    deleteComment(commentId: $commentId)
+  }
+`;
+
+export {
+  CREATE_COMMENT,
+  LOGIN_USER,
+  REGISTER_USER,
+  UPDATE_COMMENT,
+  DELETE_COMMENT,
+};

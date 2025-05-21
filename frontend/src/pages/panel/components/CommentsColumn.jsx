@@ -1,7 +1,8 @@
-import { CommentCard } from "@components";
+import { CommentCardDraggable } from "@components";
 import { useDroppable } from "@dnd-kit/core";
+import { AnimatePresence } from "framer-motion";
 
-const CommentsColumn = ({ column, comments }) => {
+const CommentsColumn = ({ column, comments, deleteComment }) => {
   const { setNodeRef } = useDroppable({
     id: column.id,
   });
@@ -15,9 +16,17 @@ const CommentsColumn = ({ column, comments }) => {
         {column.title}
       </h2>
       <div ref={setNodeRef} className="flex flex-1 flex-col cursor-pointer">
-        {comments.map((comment) => {
-          return <CommentCard key={comment.id} comment={comment} />;
-        })}
+        <AnimatePresence>
+          {comments.map((comment) => {
+            return (
+              <CommentCardDraggable
+                key={comment.id}
+                comment={comment}
+                deleteComment={deleteComment}
+              />
+            );
+          })}
+        </AnimatePresence>
       </div>
     </div>
   );

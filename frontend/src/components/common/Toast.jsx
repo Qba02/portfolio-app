@@ -14,10 +14,12 @@ const Toast = ({ message, error = false }) => {
           className={error ? "error-toast" : "success-toast"}
           duration={3000}
         >
-          <RadixToast.Close className="absolute right-2 text-white hover:scale-125 transition">
+          <RadixToast.Close className="absolute top-2 right-2 text-white hover:scale-125 transition">
             <RiCloseLargeFill />
           </RadixToast.Close>
-          <RadixToast.Description>{message}</RadixToast.Description>
+          <RadixToast.Description className="pr-6">
+            {message}
+          </RadixToast.Description>
         </RadixToast.Root>
         <RadixToast.Viewport />
       </RadixToast.Provider>

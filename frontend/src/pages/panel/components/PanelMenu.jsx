@@ -7,12 +7,10 @@ const PanelMenu = () => {
   return (
     <div className="w-full flex justify-end">
       <ul className="list-none items-center gap-12">
-        <li>
-          <div>
-            <button onClick={handleLogout}>
-              <RiLogoutCircleRLine className="w-6 h-6 hover:scale-110 transition" />
-            </button>
-          </div>
+        <li className="flex justify-center items-center">
+          <button onClick={handleLogout}>
+            <RiLogoutCircleRLine className="w-6 h-6 hover:scale-110 transition" />
+          </button>
         </li>
       </ul>
     </div>
