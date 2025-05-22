@@ -1,7 +1,6 @@
 import { useDraggable } from "@dnd-kit/core";
 import { formatDistanceToNow } from "date-fns";
 import { pl } from "date-fns/locale";
-import { motion } from "framer-motion";
 import { useState } from "react";
 
 const CommentCardDraggable = ({ comment, deleteComment }) => {
@@ -11,19 +10,21 @@ const CommentCardDraggable = ({ comment, deleteComment }) => {
     id: comment.id,
   });
 
-  const x = transform?.x ?? 0;
-  const y = transform?.y ?? 0;
-  const zIndex = transform ? 100 : "auto";
+  const style = transform
+    ? {
+        transform: `translate(${transform.x}px, ${transform.y}px)`,
+        zIndex: 100,
+        scale: 0.9,
+        transition: "0.1s",
+      }
+    : undefined;
 
   return (
-    <motion.div
+    <div
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1, x, y }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      style={{ zIndex }}
+      style={style}
       className="flex flex-col mb-8 rounded-md bg-gray-100/80 dark:bg-tertiary/80 px-6 py-4 backdrop-blur-sm"
     >
       <div
@@ -58,7 +59,7 @@ const CommentCardDraggable = ({ comment, deleteComment }) => {
       >
         {confirmDelete ? "Na pewno ?" : "Usuń"}
       </button>
-    </motion.div>
+    </div>
   );
 };
 

@@ -4,11 +4,12 @@ import { COMMENTS_MANAGER, COMMENTS_STATUS } from "@constants/panelContent";
 import { DndContext } from "@dnd-kit/core";
 import { useDeleteComment } from "@hooks";
 import { GET_ALL_COMMENTS } from "@services/queries";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CommentsColumn from "./CommentsColumn";
 
 const CommentsManager = () => {
-  const [comments, setComments] = useState([]);
+  const [commentsMap, setCommentsMap] = useState(new Map());
+
   const { data, loading, error } = useQuery(GET_ALL_COMMENTS);
   const {
     success: deleteSuccess,
@@ -17,34 +18,53 @@ const CommentsManager = () => {
   } = useDeleteComment();
 
   useEffect(() => {
-    if (data) setComments(data.comments);
+    if (data?.comments) {
+      setCommentsMap(
+        new Map(
+          data.comments.map((c) => [
+            c.id,
+            { ...c, originalApproved: c.approved },
+          ])
+        )
+      );
+    }
   }, [data]);
 
   const onCommentDelete = async (commentId) => {
     const result = await handleDeleteComment(commentId);
     if (result?.data?.deleteComment) {
-      setComments((prevComments) =>
-        prevComments.filter((c) => c.id !== commentId)
-      );
+      setCommentsMap((prevMap) => {
+        const newMap = new Map(prevMap);
+        newMap.delete(commentId);
+        return newMap;
+      });
     }
   };
 
   const handleDragEnd = ({ active, over }) => {
-    if (!over) return;
+    if (!over || active.id === over.id) return;
+
     const commentId = active.id;
     const newStatus = over.id;
 
-    setComments(() =>
-      comments.map((comment) =>
-        comment.id === commentId
-          ? {
-              ...comment,
-              approved: newStatus,
-            }
-          : comment
-      )
-    );
+    setCommentsMap((prevMap) => {
+      const newMap = new Map(prevMap);
+      const comment = newMap.get(commentId);
+
+      if (comment) {
+        newMap.set(commentId, { ...comment, approved: newStatus });
+      }
+      return newMap;
+    });
   };
+
+  const approvedComments = useMemo(() => {
+    return Array.from(commentsMap.values()).filter((c) => c.approved === true);
+  }, [commentsMap]);
+
+  const unapprovedComments = useMemo(() => {
+    return Array.from(commentsMap.values()).filter((c) => c.approved === false);
+  }, [commentsMap]);
 
   if (loading)
     return (
@@ -90,18 +110,14 @@ const CommentsManager = () => {
           <CommentsColumn
             key={COMMENTS_STATUS[0].id}
             column={COMMENTS_STATUS[0]}
-            comments={comments.filter(
-              (comment) => comment.approved === COMMENTS_STATUS[0].id
-            )}
+            comments={approvedComments}
             deleteComment={onCommentDelete}
           />
 
           <CommentsColumn
             key={COMMENTS_STATUS[1].id}
             column={COMMENTS_STATUS[1]}
-            comments={comments.filter(
-              (comment) => comment.approved === COMMENTS_STATUS[1].id
-            )}
+            comments={unapprovedComments}
             deleteComment={onCommentDelete}
           />
         </DndContext>
