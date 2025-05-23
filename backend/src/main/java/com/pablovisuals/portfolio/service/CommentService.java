@@ -1,8 +1,7 @@
 package com.pablovisuals.portfolio.service;
 
 import com.mongodb.client.result.DeleteResult;
-import com.pablovisuals.portfolio.dto.CommentInput;
-import com.pablovisuals.portfolio.dto.CommentUpdateInput;
+import com.pablovisuals.portfolio.dto.*;
 import com.pablovisuals.portfolio.exception.AlreadyExistsException;
 import com.pablovisuals.portfolio.exception.NotFoundException;
 import com.pablovisuals.portfolio.model.Comment;
@@ -10,8 +9,7 @@ import com.pablovisuals.portfolio.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.FindAndModifyOptions;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.*;
 import org.springframework.data.mongodb.core.query.*;
 import org.springframework.stereotype.Service;
 
@@ -83,5 +81,23 @@ public class CommentService {
         } else {
             return true;
         }
+    }
+
+    public boolean bulkUpdateCommentsApprovedStatus(List<CommentUpdateApprovedStatusInput> comments) {
+        BulkOperations bulkOps = mongoTemplate.bulkOps(BulkOperations.BulkMode.UNORDERED, Comment.class);
+
+        for (CommentUpdateApprovedStatusInput input : comments) {
+            Query query = new Query(Criteria.where("_id").is(input.id()));
+
+            if(mongoTemplate.exists(query, Comment.class)){
+                Update update = new Update().set("approved", input.approved());
+                bulkOps.updateOne(query, update);
+            }else{
+                throw new NotFoundException("Comment", input.id());
+            }
+        }
+
+        bulkOps.execute();
+        return true;
     }
 }

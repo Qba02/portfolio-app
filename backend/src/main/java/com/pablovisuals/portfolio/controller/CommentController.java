@@ -1,7 +1,6 @@
 package com.pablovisuals.portfolio.controller;
 
-import com.pablovisuals.portfolio.dto.CommentInput;
-import com.pablovisuals.portfolio.dto.CommentUpdateInput;
+import com.pablovisuals.portfolio.dto.*;
 import com.pablovisuals.portfolio.model.Comment;
 import com.pablovisuals.portfolio.service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +37,12 @@ public class CommentController {
     @MutationMapping
     public Comment updateComment(@Argument CommentUpdateInput comment){
         return commentService.updateComment(comment);
+    }
+
+    @MutationMapping
+    @PreAuthorize("isAuthenticated()")
+    public Boolean updateCommentsApprovedStatus(@Argument List<CommentUpdateApprovedStatusInput> comments){
+        return commentService.bulkUpdateCommentsApprovedStatus(comments);
     }
     @MutationMapping
     @PreAuthorize("isAuthenticated()")
