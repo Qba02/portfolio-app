@@ -1,14 +1,15 @@
 import { useQuery } from "@apollo/client";
-import { Loader, MotionToast, Toast } from "@components";
+import { Loader, FixedMotionToast } from "@components";
 import { COMMENTS_MANAGER, COMMENTS_STATUS } from "@constants/panelContent";
 import { DndContext } from "@dnd-kit/core";
-import { useDeleteComment } from "@hooks";
+import { useBulkUpdateComments, useDeleteComment } from "@hooks";
 import { GET_ALL_COMMENTS } from "@services/queries";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import CommentsColumn from "./CommentsColumn";
 
 const CommentsManager = () => {
   const [commentsMap, setCommentsMap] = useState(new Map());
+  const commentsToUpdateMap = useRef(new Map());
 
   const { data, loading, error } = useQuery(GET_ALL_COMMENTS);
   const {
@@ -16,6 +17,11 @@ const CommentsManager = () => {
     error: deleteError,
     handleDeleteComment,
   } = useDeleteComment();
+  const {
+    success: updateSuccess,
+    error: updateError,
+    handleBulkUpdateComments,
+  } = useBulkUpdateComments();
 
   useEffect(() => {
     if (data?.comments) {
@@ -41,6 +47,16 @@ const CommentsManager = () => {
     }
   };
 
+  const onCommentsUpdate = async () => {
+    if (commentsToUpdateMap.current.size !== 0) {
+      await handleBulkUpdateComments(
+        Array.from(commentsToUpdateMap.current.entries()).map(
+          ([id, approved]) => ({ id, approved })
+        )
+      );
+    }
+  };
+
   const handleDragEnd = ({ active, over }) => {
     if (!over || active.id === over.id) return;
 
@@ -56,6 +72,10 @@ const CommentsManager = () => {
       }
       return newMap;
     });
+
+    commentsToUpdateMap.current.has(commentId)
+      ? commentsToUpdateMap.current.delete(commentId)
+      : commentsToUpdateMap.current.set(commentId, newStatus);
   };
 
   const approvedComments = useMemo(() => {
@@ -88,21 +108,21 @@ const CommentsManager = () => {
             <Toast message="Błąd podczas ładowania komentarzy" error />
           </div>
         ) : (
-          <button className="primary-button">Zatwierdź zmiany</button>
+          <button onClick={onCommentsUpdate} className="primary-button">
+            Zatwierdź zmiany
+          </button>
         )}
       </div>
 
       <div className="fixed bottom-6 right-6 z-50 w-fit">
         {deleteError && (
-          <MotionToast>
-            <Toast message="Nie udało się usunąć komentarza" error />
-          </MotionToast>
+          <FixedMotionToast message="Komentarz nie został usunięty" error />
         )}
-        {deleteSuccess && (
-          <MotionToast>
-            <Toast message="Komentarz usunięty" />
-          </MotionToast>
+        {deleteSuccess && <FixedMotionToast message="Komentarz usunięty" />}
+        {updateError && (
+          <FixedMotionToast message="NIe udało się zatwiedzić zmian" error />
         )}
+        {updateSuccess && <FixedMotionToast message="Zapisano zmiany" />}
       </div>
 
       <div className="flex gap-8 flex-wrap">

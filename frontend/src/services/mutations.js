@@ -44,10 +44,19 @@ const DELETE_COMMENT = gql`
   }
 `;
 
+const UPDATE_COMMENTS_APPROVED_STATUS = gql`
+  mutation UpdateCommentsApprovedStatus(
+    $comments: [CommentUpdateApprovedStatusInput]!
+  ) {
+    updateCommentsApprovedStatus(comments: $comments)
+  }
+`;
+
 export {
   CREATE_COMMENT,
   LOGIN_USER,
   REGISTER_USER,
   UPDATE_COMMENT,
   DELETE_COMMENT,
+  UPDATE_COMMENTS_APPROVED_STATUS,
 };

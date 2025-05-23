@@ -1,6 +1,7 @@
 import CommentCard from "./cards/CommentCard";
 import CommentCardDraggable from "./cards/CommentCardDraggable";
 import FlipCard from "./cards/FlipCard";
+import FixedMotionToast from "./common/FixedMotionToast";
 import Loader from "./common/Loader";
 import Modal from "./common/Modal";
 import MotionToast from "./common/MotionToast";
@@ -23,6 +24,7 @@ export {
   CommentUpdateForm,
   ContactForm,
   EnvelopeCanvas,
+  FixedMotionToast,
   FlipCard,
   Footer,
   Loader,
