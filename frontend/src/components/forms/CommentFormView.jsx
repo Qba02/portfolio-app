@@ -1,4 +1,4 @@
-import { Loader, Toast, MotionToast } from "@components/index";
+import { FixedMotionToast } from "@components/index";
 import { MdCleaningServices } from "react-icons/md";
 import { NameInput, TextInput } from "./inputs";
 
@@ -47,16 +47,8 @@ const CommentFormView = ({
       </button>
 
       <div className="h-1">
-        {error && (
-          <MotionToast>
-            <Toast message={errorMessage} error={true} />
-          </MotionToast>
-        )}
-        {success && (
-          <MotionToast>
-            <Toast message={successMessage} />
-          </MotionToast>
-        )}
+        {error && <FixedMotionToast message={errorMessage} error={true} />}
+        {success && <FixedMotionToast message={successMessage} />}
       </div>
       <div className="flex">
         <button type="submit" className="form-submit-button">
