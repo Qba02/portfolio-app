@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { EmailInput, NameInput, TextInput } from "./inputs";
+import { useSendEmail } from "@hooks";
+import { FixedMotionToast, Loader } from "@components";
 
 function ContactForm() {
   const {
@@ -9,9 +11,13 @@ function ContactForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
+  const { success, error, loading, handleSentEmail } = useSendEmail();
+
+  const onSubmit = async (data) => {
+    await handleSentEmail(data);
+    if (success) {
+      reset();
+    }
   };
 
   return (
@@ -42,9 +48,24 @@ function ContactForm() {
         rows={5}
       />
 
-      <button type="submit" className="form-submit-button">
-        Wyślij
-      </button>
+      <div className="h-1 flex items-center">
+        {error && (
+          <FixedMotionToast
+            message="Nie udało się wysłać wiadomości"
+            error={true}
+            className="w-full"
+          />
+        )}
+        {success && <FixedMotionToast message="Wiadomość wysłana pomyślnie" />}
+      </div>
+
+      {loading ? (
+        <Loader scale={0.7} />
+      ) : (
+        <button type="submit" className="form-submit-button !mt-1">
+          Wyślij
+        </button>
+      )}
     </form>
   );
 }

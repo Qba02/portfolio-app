@@ -52,6 +52,12 @@ const UPDATE_COMMENTS_APPROVED_STATUS = gql`
   }
 `;
 
+const SEND_CONTACT_INFO = gql`
+  mutation SendContactInfo($contactInput: ContactInput!) {
+    sendContactInfo(contactInput: $contactInput)
+  }
+`;
+
 export {
   CREATE_COMMENT,
   LOGIN_USER,
@@ -59,4 +65,5 @@ export {
   UPDATE_COMMENT,
   DELETE_COMMENT,
   UPDATE_COMMENTS_APPROVED_STATUS,
+  SEND_CONTACT_INFO,
 };
