@@ -1,7 +1,8 @@
+import { FixedMotionToast, Loader } from "@components";
+import { useSendEmail } from "@hooks";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { EmailInput, NameInput, TextInput } from "./inputs";
-import { useSendEmail } from "@hooks";
-import { FixedMotionToast, Loader } from "@components";
 
 function ContactForm() {
   const {
@@ -15,10 +16,13 @@ function ContactForm() {
 
   const onSubmit = async (data) => {
     await handleSentEmail(data);
+  };
+
+  useEffect(() => {
     if (success) {
       reset();
     }
-  };
+  }, [success]);
 
   return (
     <form
