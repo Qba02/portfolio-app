@@ -8,6 +8,8 @@ type Mutation {
     loginUser(user: UserLoginInput!): UserAuthResponse
     updateUser(user: UserUpdateInput!): User
     deleteUser(userId: ID!): Boolean
+
+    sendContactInfo(contactInput: ContactInput!): Boolean!
 }
 
 input CommentInput {
@@ -42,4 +44,10 @@ input UserUpdateInput {
     username: String
     email: String
     password: String
+}
+
+input ContactInput {
+    name: String!
+    email: String!
+    message: String!
 }
