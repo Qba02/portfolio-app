@@ -19,11 +19,9 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(receiverEmail);
         message.setFrom(receiverEmail);
-        message.setSubject("PabloVisuals - wiadomość od " + input.name());
+        message.setSubject("PabloVisuals - wiadomość od \"" + input.name() + "\"");
         message.setText(
-                "Imię: " + input.name() + "\n" +
-                        "Email: " + input.email() + "\n\n" +
-                        "Wiadomość:\n" + input.message()
+                input.message() + "\n\n" + input.name() + "\n" + input.email()
         );
 
         mailSender.send(message);
